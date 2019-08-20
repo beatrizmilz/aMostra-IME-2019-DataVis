@@ -115,6 +115,11 @@ class: middle
 ```{r, out.width="100%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> - Adaptado de WICKHAM & GROLEMUND, 2017</b></center>"}
 knitr::include_graphics("img/allisonhorst/data-analysis.jpg")
 ```
+
+---
+class: middle
+
+# Parte dos slides da Nath 
 ---
 class: middle
 
@@ -366,6 +371,13 @@ knitr::include_graphics("img/shinyleaflet.gif")
 ```
 
 - Código disponível no [Github - RStudio](https://github.com/rstudio/shiny-examples/tree/master/063-superzip-example)
+
+
+
+---
+class: middle
+
+# PARTE PRÁTICA
 
 ---
 class: middle
