@@ -1,0 +1,409 @@
+---
+# Para transformar em PDF, usar: 
+# pagedown::chrome_print("docs/index.html")
+title: "Visualização de Dados com o R<br>"
+subtitle: "14ª aMostra Estatística 2019 <BR> <br>bit.ly/xxxx <br>"
+author: "R-Ladies São Paulo"
+date: "19/09/2019"
+output:
+  xaringan::moon_reader:
+    css: ["css/kunoichi.css", "css/ninjutsu.css", "css/rladies-fonts.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+layout: true
+  
+<div class="my-footer"><span>
+
+<a href="https://twitter.com/RLadiesSaoPaulo">Twitter</a> | 
+<a href="http://instagram.com/RLadiesSaoPaulo">Instagram</a> |
+<a href="http://facebook.com/RLadiesSaoPaulo">Facebook</a> |
+<a href="https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo">Meetup</a> |
+<a href="https://github.com/rladies/meetup-presentations_sao-paulo">Github</a> |
+<a href="http://bit.ly/xxxx">bit.ly/xxx</a> 
+
+
+</span></div> 
+
+---
+class: middle
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message=FALSE, warning=FALSE)
+```
+
+# Programação
+
+- 
+- 
+-
+
+---
+class:  center
+
+```{r, out.width="15%", fig.cap="<center><b>Logo - R-Ladies </center></b>"}
+knitr::include_graphics("img/hexlogorladies.jpeg")
+```
+
+- R-Ladies é uma organização mundial que **promove a diversidade de gênero** na comunidade da linguagem R.
+
+- R-Ladies São Paulo integra, orgulhosamente, a organização R-Ladies Global, em São Paulo. 
+
+--
+
+- [Código de conduta - R-Ladies](https://github.com/rladies/starter-kit/wiki/Code-of-Conduct#portuguese)
+
+--
+
+- Saiba mais:
+  - Website RLadies Global: [https://rladies.org/](https://rladies.org/)
+  - Twitter: [@RLadiesGlobal](https://twitter.com/rladiesglobal), [@RLadiesSaoPaulo](https://twitter.com/RLadiesSaoPaulo)
+  - Instagram: [@RLadiesSaoPaulo](http://instagram.com/RLadiesSaoPaulo)
+  - Facebook: [@RLadiesSaoPaulo](http://facebook.com/RLadiesSaoPaulo)
+  - MeetUp: [https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
+  - Github: [https://github.com/rladies/meetup-presentations_sao-paulo](https://github.com/rladies/meetup-presentations_sao-paulo)
+
+
+---
+class: middle
+
+# O que é R?
+
+- É uma linguagem de programação
+
+- É também um software gratuito
+
+- Saiba mais em: [r-project.org](https://www.r-project.org/about.html) 
+
+```{r, out.width="50%", fig.cap="<center><b>Logo - R </center></b>"}
+knitr::include_graphics("img/R_logo.svg.png")
+```
+---
+class: middle
+
+# Pacotes
+
+- "Um pacote R é uma coleção de funções, dados e documentação que amplia os recursos do R base" ([WICKHAM & GROLEMUND, 2017](https://r4ds.had.co.nz/))
+
+  - [**CRAN** - The Comprehensive R Archive Network](https://cran.r-project.org/web/packages/)
+     + Mais de 14.600 pacotes disponíveis  
+     
+  - [**Bioconductor** - Open Source Software for Bioinformatics](https://www.bioconductor.org/)
+     + Mais de 1.700 pacotes disponíveis 
+     
+  - [**Github**](https://github.com/)
+     + Quantidade desconhecida!
+
+
+---
+class: middle
+# Tidyverse 
+
+- Os pacotes do [tidyverse](https://www.tidyverse.org/) compartilham uma filosofia comum de dados e programação R, e são projetados para trabalhar juntos naturalmente ([WICKHAM & GROLEMUND, 2017](https://r4ds.had.co.nz/))
+
+```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
+knitr::include_graphics("img/allisonhorst/tidyverse.jpg")
+```
+
+---
+class: middle
+
+# O ciclo da ciência de dados
+```{r, out.width="100%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> - Adaptado de WICKHAM & GROLEMUND, 2017</b></center>"}
+knitr::include_graphics("img/allisonhorst/data-analysis.jpg")
+```
+---
+class: middle
+
+# **Quais são os principais pacotes para visualização de dados?**
+
+---
+class: middle
+
+# Pacote ggplot2
+
+```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
+knitr::include_graphics("img/allisonhorst/ggplot2_obra_prima_pt.png")
+```
+---
+class: middle
+
+# Pacote ggplot2
+
+```{r, out.width="30%", fig.cap="<center><b>Logo: <a href='https://rmarkdown.rstudio.com'>Pacote ggplot2</a></b></center>"}
+knitr::include_graphics("img/rlogos/hex-ggplot2.png")
+```
+
+- Mantido pela [RStudio](https://rstudio.com/)
+
+- Criado pelo [Hadley Wickham](http://hadley.nz/)
+
+- Possibilita a criação de diversos tipos de gráficos
+
+
+---
+class: middle
+
+# Exemplos ggplot2 
+
+```{r}
+library(ggplot2)
+library(gganimate)
+library(gapminder)
+theme_set(theme_bw())
+```
+
+```{r message=FALSE, warning=FALSE, out.width="60%", cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>"}
+p <- ggplot(
+  gapminder, 
+  aes(x = gdpPercap, y=lifeExp, size = pop, colour = country)
+  ) +
+  geom_point(show.legend = FALSE, alpha = 0.7) +
+  scale_color_viridis_d() +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  labs(x = "PIB per capita", y = "Expectativa de vida (anos)")
+p
+```
+
+
+---
+class: middle
+
+# Exemplos ggplot2 + gganimate
+```{r, cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>", out.width="60%"}
+p + transition_time(year) +
+  labs(title = "Ano: {frame_time}")
+```
+
+---
+class: middle
+
+# Exemplos ggplot2 + gganimate
+```{r, cache = TRUE,out.width="60%", fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>"}
+p + facet_wrap(~continent) +
+  transition_time(year) +
+  labs(title = "Ano: {frame_time}")
+```
+---
+class: middle
+
+### highcharter
+
+```{r, cache = TRUE, fig.cap="<center><b> Fonte: <a href='https://rkabacoff.github.io/datavis/Interactive.html'>Adaptado de Datavis with R </a></b></center>", out.width="45%"}
+
+# create interactive line chart
+library(highcharter)
+
+# prepare data
+data(gapminder, package = "gapminder")
+library(dplyr)
+asia <- gapminder %>%
+  filter(continent == "Americas") %>%
+  select(year, country, lifeExp)
+
+# convert to long to wide format
+library(tidyr)
+plotdata <- spread(asia, country, lifeExp)
+
+# generate graph
+h <- highchart() %>% 
+  hc_xAxis(categories = plotdata$year) %>% 
+  hc_add_series(name = "Brasil", 
+                data = plotdata$Brazil) %>% 
+  hc_add_series(name = "Argentina", 
+                data = plotdata$Argentina) %>%
+  hc_add_series(name = "Paraguai", 
+                data = plotdata$Paraguay) %>%
+  hc_add_series(name = "Uruguai", 
+                data = plotdata$Uruguay) %>%
+
+  hc_title(text = "Expectativa de vida por País - Mercosul",
+           margin = 20, 
+           align = "left",
+           style = list(color = "steelblue")) %>% 
+  hc_subtitle(text = "1952 à 2007",
+              align = "left",
+              style = list(color = "#2b908f", 
+                           fontWeight = "bold")) %>% 
+  hc_credits(enabled = TRUE, # add credits
+             text = "Gapminder Data",
+             href = "http://gapminder.com") %>% 
+  hc_legend(align = "left", 
+            verticalAlign = "top",
+            layout = "vertical", 
+            x = 0, 
+            y = 100) %>%
+  hc_tooltip(crosshairs = TRUE, 
+             backgroundColor = "#FCFFC5",
+             shared = TRUE, 
+             borderWidth = 4) %>% 
+  hc_exporting(enabled = TRUE)
+
+  h
+```
+
+---
+class: middle
+
+# Pacote rmarkdown
+
+```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
+knitr::include_graphics("img/allisonhorst/rmarkdown_wizards.png")
+```
+
+
+---
+class: middle
+
+# Pacote rmarkdown
+
+```{r, out.width="25%", fig.cap="<center><b>Logo: <a href='https://rmarkdown.rstudio.com'>Pacote rmarkdown</a></b></center>"}
+knitr::include_graphics("img/rlogos/hex-rmarkdown.png")
+```
+
+- Mantido pela [RStudio](https://rstudio.com/)
+
+- extensão `.Rmd`
+
+- Possibilita a utilização de códigos R, Markdown, HTML e outros.
+
+- Útil para relatórios dinâmicos!
+
+- Confira a [Galeria](https://rmarkdown.rstudio.com/gallery.html)!
+
+
+---
+class: middle
+
+# Pacote rmarkdown
+
+```{r, out.width="60%", fig.cap="<center><b>Fonte: <a href='https://rmarkdown.rstudio.com'>Pacote rmarkdown</a></b></center>"}
+knitr::include_graphics("img/RMarkdownOutputFormats.png")
+```
+
+
+---
+class: middle
+
+# Pacote xaringan
+
+```{r, out.width="30%", fig.cap="<center><b>Logo: <a href='https://github.com/yihui/xaringan'>Pacote xaringan</a></b></center>"}
+knitr::include_graphics("img/rlogos/hex-xaringan.png")
+```
+
+- Possibilita criar apresentações **ninja** com R Markdown
+
+- Utiliza a biblioteca remark.js
+
+- Resultado em HTML (mas também PDF - estático)
+
+---
+class: middle
+
+# Pacote Shiny
+
+```{r, out.width="30%", fig.cap="<center><b>Logo: <a href='https://shiny.rstudio.com/'>Pacote Shiny</a></b></center>"}
+knitr::include_graphics("img/rlogos/hex-shiny3.jpg")
+```
+
+- Mantido pela [RStudio](https://rstudio.com/)
+
+- Dashboards interativos
+
+- Confira a [Galeria](https://shiny.rstudio.com/gallery/)!
+
+---
+class: middle
+
+# Exemplo de Shiny
+
+```{r, out.width="100%", fig.cap="<center><b>GIF: Demonstração de um  <a href='https://beatriz-milz.shinyapps.io/pesquisa_periodicos/'>Shiny de consulta de Periódicos</a> </b></center>"}
+
+knitr::include_graphics("img/periodicos_exemplo.gif")
+```
+
+---
+class: middle
+
+# Exemplo de Shiny
+
+```{r, out.width="100%", fig.cap="<center><b>GIF: Demonstração de um  <a href='https://apps.garrickadenbuie.com/user-2019/'>Shiny com Tweets sobre a useR!2019 Conf. </a> </b></center>"}
+
+knitr::include_graphics("img/user2019shiny.gif")
+```
+
+---
+class: middle
+
+# Pacote leaflet
+
+```{r, out.width="40%", fig.cap="<center><b>Logo: <a href='https://leafletjs.com/'>Biblioteca Leaflet</a></b></center>"}
+knitr::include_graphics("img/logo-leaflet.svg")
+```
+
+- Mantido pela [RStudio](https://rstudio.com/)
+
+- É uma biblioteca javascript para criação de mapas interativos. 
+
+- O [pacote leaflet do R](https://rstudio.github.io/leaflet/) é um htmlwidget que permite gerar esses mapas de forma direta no R, para usar em documentos RMarkdown e Shiny.
+
+
+Fonte: [Post no blog da Curso-R](https://www.curso-r.com/blog/2017-02-21-markercluster/)
+
+
+---
+class: middle
+
+# Exemplo - leaflet + Shiny
+
+```{r, out.width="100%", fig.cap="<center><b>GIF: Demonstração do  <a href='http://shiny.rstudio.com/gallery/superzip-example.html'>Shiny Super Zip Explorer</a> </b></center>"}
+
+knitr::include_graphics("img/shinyleaflet.gif")
+```
+
+- Código disponível no [Github - RStudio](https://github.com/rstudio/shiny-examples/tree/master/063-superzip-example)
+
+---
+class: middle
+
+```{r, out.width="95%", fig.cap="<center><b>Fonte: <a href='https://www.data-to-viz.com/'>From Data to Viz</a> </b></center>"}
+knitr::include_graphics("img/from-data-to-viz.png")
+```
+
+
+---
+class: middle
+
+```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
+knitr::include_graphics("img/allisonhorst/community1.jpg")
+```
+
+---
+class:  center, middle
+
+## Obrigada!
+
+- Contato:
+
+  - Website RLadies Global: [https://rladies.org/](https://rladies.org/)
+
+  - Twitter: [@RLadiesGlobal](https://twitter.com/rladiesglobal), [@RLadiesSaoPaulo](https://twitter.com/RLadiesSaoPaulo)
+
+  - Instagram: [@RLadiesSaoPaulo](http://instagram.com/RLadiesSaoPaulo)
+
+  - Facebook: [@RLadiesSaoPaulo](http://facebook.com/RLadiesSaoPaulo)
+
+  - MeetUp: [https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
+
+  - Github: [https://github.com/rladies/meetup-presentations_sao-paulo](https://github.com/rladies/meetup-presentations_sao-paulo)
+
+  - R-Ladies LATAM Blog (Latin America) - Em breve!
+
+
+- Apresentação feita com [Xaringan](https://github.com/yihui/xaringan) e [Kunoichi](https://github.com/emitanaka/ninja-theme). Código disponível [neste repositório](https://github.com/beatrizmilz/aMostra-IME-2019-DataVis).
+
+- Materiais de estudo disponíveis [neste repositório](https://github.com/beatrizmilz/materiais_estudo_R)
