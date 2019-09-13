@@ -10,6 +10,7 @@ output:
     css: ["css/kunoichi.css", "css/ninjutsu.css", "css/rladies-fonts.css"]
     lib_dir: libs
     nature:
+      ratio: "16:9"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
@@ -32,7 +33,7 @@ layout: true
 class: middle
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message=FALSE, warning=FALSE)
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message=FALSE, warning=FALSE, out.width = "80%")
 ```
 
 # Programação
@@ -419,3 +420,21 @@ class:  center, middle
 - Apresentação feita com [Xaringan](https://github.com/yihui/xaringan) e [Kunoichi](https://github.com/emitanaka/ninja-theme). Código disponível [neste repositório](https://github.com/beatrizmilz/aMostra-IME-2019-DataVis).
 
 - Materiais de estudo disponíveis [neste repositório](https://github.com/beatrizmilz/materiais_estudo_R)
+
+<!-------------ABAIXO: SLIDE MODELO PARA EXERCÍCIOS----------->
+---
+class: middle
+
+.left-code[
+```{r plot-exemplo-ggplot2, echo=TRUE, fig.show="hide", out.width="90%"}
+library(ggplot2)
+ggplot(mtcars) + 
+  aes(x = hp, y = mpg, colour = cyl) +
+  geom_point(size = 2L)
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot2", "png")`)
+]
+
