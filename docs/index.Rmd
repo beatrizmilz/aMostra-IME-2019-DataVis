@@ -394,7 +394,347 @@ class: middle
 ```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
 knitr::include_graphics("img/allisonhorst/community1.jpg")
 ```
+---
+# Rascunho Geovana
+---
+class: middle
+# Histograma
 
+.left-code[
+```{r plot-exemplo-hist1, echo=TRUE, fig.show="hide", out.width="90%"}
+library(ggplot2)
+library(MASS)
+
+df <- Cars93 #criando um dataframe
+
+ggplot(df, aes(x = Horsepower)) 
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-hist1", "png")`)
+]
+---
+class: middle
+# Histograma
+
+.left-code[
+```{r plot-exemplo-hist2, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(df, aes(x = Horsepower)) +
+  geom_histogram( )
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-hist2", "png")`)
+]
+---
+class: middle
+# Histograma
+
+.left-code[
+```{r plot-exemplo-hist3, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(df, aes(x = Horsepower)) +
+  geom_histogram( binwidth  = 5,color = "black", fill = "darkorchid4")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-hist3", "png")`)
+]
+---
+class: middle
+# Histograma
+
+.left-code[
+```{r plot-exemplo-hist4, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(df, aes(x = Horsepower)) +
+  geom_histogram( binwidth  = 5,color = "black", fill = "darkorchid4") +
+  theme_bw()+
+  labs(x = "Frequencia", y = "Horsepower", title = "Potencia")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-hist4", "png")`)
+]
+---
+class: middle
+# Histograma
+
+.left-code[
+```{r plot-exemplo-hist5, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(df, aes(x = Horsepower)) +
+  geom_histogram( bins  = 10,color = "black", fill = "darkorchid4") +
+  theme_bw()+
+  labs(x = "Frequencia", y = "Horsepower", title = "Potencia")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-hist5", "png")`)
+]
+
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar1, echo=TRUE, fig.show="hide", out.width="90%"}
+b <- ggplot(df, aes(x = Type))
+b
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar1", "png")`)
+]
+
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar2, echo=TRUE, fig.show="hide", out.width="90%"}
+b + geom_bar()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar2", "png")`)
+]
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar3, echo=TRUE, fig.show="hide", out.width="90%"}
+b + geom_bar(fill="darkorchid4")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar3", "png")`)
+]
+
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar5, echo=TRUE, fig.show="hide", out.width="90%"}
+b +geom_bar(fill="darkorchid4") +
+  labs(x = "Tipo de carro", y = "Contagem",
+       title = "Tipo de carro")+
+  theme_minimal()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar5", "png")`)
+]
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar6, echo=TRUE, fig.show="hide", out.width="90%"}
+b +geom_bar(fill="darkorchid4") +
+  labs(x = "Tipo de carro", y = "Contagem",
+       title = "Tipo de carro")+
+  theme_minimal()+
+  facet_grid(~AirBags)
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar6", "png")`)
+]
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar7, echo=TRUE, fig.show="hide", out.width="90%"}
+bar <- ggplot(df, aes(Type, fill = AirBags))
+
+bar + geom_bar(position = "dodge",color = "black")+
+  scale_fill_brewer(palette = "Purples", direction=1)+
+  theme_minimal()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar7", "png")`)
+]
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar8, echo=TRUE, fig.show="hide", out.width="90%"}
+bar + geom_bar(position = "fill",color = "black")+
+  scale_fill_brewer(palette = "Purples", direction=1)+
+  theme_minimal()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar8", "png")`)
+]
+
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar9, echo=TRUE, fig.show="hide", out.width="90%"}
+bar + geom_bar(position = "stack",color = "black")+
+  scale_fill_brewer(palette = "Purples", direction=1)+
+  theme_minimal()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar9", "png")`)
+]
+---
+class: middle
+# Gráfico de Barras
+
+.left-code[
+```{r plot-exemplo-bar10, echo=TRUE, fig.show="hide", out.width="90%"}
+bar + geom_bar(position = "stack",color = "black")+
+  scale_fill_brewer(palette = "Purples", direction=1)+
+  theme_minimal()+
+  coord_flip()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bar10", "png")`)
+]
+---
+class: middle
+# Boxplot
+
+.left-code[
+```{r plot-exemplo-bpt1, echo=TRUE, fig.show="hide", out.width="90%"}
+dfhair <- data.frame(HairEyeColor)
+
+ggplot(dfhair, aes(x=as.factor(Sex), y=Freq,fill=Sex))+
+  theme_minimal()+
+  geom_boxplot()
+
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bpt1", "png")`)
+]
+---
+class: middle
+# Boxplot
+
+.left-code[
+```{r plot-exemplo-bpt2, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(dfhair, aes(x=as.factor(Sex), y=Freq, color=Sex))+
+  theme_minimal()+
+  geom_boxplot()+
+  scale_x_discrete(labels=c("Homem","Mulher"))+
+  xlab("Sexo")+
+  ylab("Frequencia")+
+  scale_color_manual(values=c("darkorchid4","brown2"))
+
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bpt2", "png")`)
+]
+---
+class: middle
+# Boxplot
+
+.left-code[
+```{r plot-exemplo-bpt3, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(dfhair, aes(x=as.factor(Sex), y=Freq,color=Sex))+
+  theme_minimal()+
+  geom_boxplot(outlier.colour="black", outlier.shape=8,
+               outlier.size=4)+
+  scale_x_discrete(labels=c("Homem","Mulher"))+
+  xlab("Sexo")+
+  ylab("Frequencia")+
+  scale_color_manual(values=c("darkorchid4","brown2"))
+
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bpt3", "png")`)
+]
+---
+class: middle
+# Boxplot
+
+.left-code[
+```{r plot-exemplo-bpt4, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(dfhair, aes(x=as.factor(Sex), y=Freq,color=Sex))+
+  theme_minimal()+
+  geom_boxplot()+
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=1, binwidth = 2)+
+  scale_x_discrete(labels=c("Homem","Mulher"))+
+  xlab("Sexo")+
+  ylab("Frequencia")+
+  scale_color_manual(values=c("darkorchid4","brown2"))
+
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bpt4", "png")`)
+]
+---
+class: middle
+# Boxplot
+
+.left-code[
+```{r plot-exemplo-bpt6, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(dfhair, aes(x=as.factor(Sex), y=Freq,color=Sex))+
+  theme_minimal()+
+  geom_boxplot(outlier.colour="black", outlier.shape=8,
+               outlier.size=4)+
+  scale_x_discrete(labels=c("Homem","Mulher"))+
+  labs(title="Boxplot", x="Sexo", y="Frequencia", subtitle = "HairEyeColor")
+
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bpt6", "png")`)
+]
+---
+
+class: middle
+# Boxplot
+
+.left-code[
+```{r plot-exemplo-bpt7, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(dfhair, aes(x=as.factor(Sex), y=Freq,fill=Sex))+
+  theme_minimal()+
+  geom_boxplot(outlier.colour="black", outlier.shape=8,
+               outlier.size=4)+
+  scale_x_discrete(labels=c("Homem","Mulher"))+
+  labs(title="Boxplot", x="Sexo", y="Frequencia", subtitle = "HairEyeColor")+
+  scale_fill_manual(values=c("darkorchid4","brown2"))
+
+
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-bpt7", "png")`)
+]
 ---
 class:  center, middle
 
