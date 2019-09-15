@@ -747,7 +747,7 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
   labs(
     title = "Boxplot",
     x = "Sexo",
-    y = "Frequencia",
+    y = "Frequência",
     subtitle = "HairEyeColor"
   )
 ```
@@ -775,7 +775,7 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
   labs(
     title = "Boxplot",
     x = "Sexo",
-    y = "Frequencia",
+    y = "Frequência",
     subtitle = "HairEyeColor"
   ) +
   scale_fill_manual(values = 
