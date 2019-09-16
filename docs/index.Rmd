@@ -764,8 +764,8 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 
 
 ---
-
 class: middle
+
 # Boxplot
 
 .left-code[
