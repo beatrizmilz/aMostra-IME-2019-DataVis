@@ -2,7 +2,7 @@
 # Para transformar em PDF, usar: 
 # pagedown::chrome_print("docs/index.html")
 title: "Visualização de Dados com o R<br>"
-subtitle: "14ª aMostra Estatística 2019 <BR> <br>bit.ly/xxxx <br>"
+subtitle: "14ª aMostra Estatística 2019 <br><br><br><br>"
 author: "R-Ladies São Paulo"
 date: "19/09/2019"
 output:
@@ -14,6 +14,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+
 ---
 layout: true
   
@@ -29,27 +30,71 @@ layout: true
 
 </span></div> 
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message=FALSE, warning=FALSE)
+```
+
+```{r libs}
+#graphs
+ if(!require("ggplot2")){install.packages("ggplot2", dependencies = T); library(ggplot2)}
+ if(!require("gganimate")){install.packages("gganimate", dependencies = T); library(gganimate)}
+ if(!require("gapminder")){install.packages("gapminder", dependencies = T); library(gapminder)}
+
+#create interactive line chart
+ if(!require("highcharter")){install.packages("highcharter", dependencies = T); library(highcharter)}
+
+#data transformation
+ if(!require("dplyr")){install.packages("dplyr", dependencies = T); library(dplyr)}
+ if(!require("tidyr")){install.packages("tidyr", dependencies = T); library(tidyr)}
+
+```
+
+
+
+<!-- programação -->
+---
+class: middle 
+
+# Programação 
+
+- Quem são as R-Ladies?
+
+- E por que o R?
+
+- Conceitos de Comunicação
+
+- Aplicação práticas
+
+
+
+<!-- programação -->
 ---
 class: middle
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message=FALSE, warning=FALSE, out.width = "60%")
-```
-
 # Programação
 
-- 
-- 
--
+- Quem são as R-Ladies?
 
+- E por que o R?
+
+- Conceitos de Comunicação
+
+- Aplicação práticas ... muitas
+
+
+
+<!-- R-Ladies -->
 ---
 class:  center
 
-```{r, out.width="15%", fig.cap="<center><b>Logo - R-Ladies </center></b>"}
+```{r, out.width="18%", fig.cap="<center><b> </center></b>"}
 knitr::include_graphics("img/hexlogorladies.jpeg")
 ```
 
-- R-Ladies é uma organização mundial que **promove a diversidade de gênero** na comunidade da linguagem R.
+
+- R-Ladies é uma organização mundial que **promove a diversidade de gênero** na comunidade R.
+
+--
 
 - R-Ladies São Paulo integra, orgulhosamente, a organização R-Ladies Global, em São Paulo. 
 
@@ -61,343 +106,267 @@ knitr::include_graphics("img/hexlogorladies.jpeg")
 
 - Saiba mais:
   - Website RLadies Global: [https://rladies.org/](https://rladies.org/)
+  - MeetUp: [https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
   - Twitter: [@RLadiesGlobal](https://twitter.com/rladiesglobal), [@RLadiesSaoPaulo](https://twitter.com/RLadiesSaoPaulo)
   - Instagram: [@RLadiesSaoPaulo](http://instagram.com/RLadiesSaoPaulo)
   - Facebook: [@RLadiesSaoPaulo](http://facebook.com/RLadiesSaoPaulo)
-  - MeetUp: [https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
   - Github: [https://github.com/rladies/meetup-presentations_sao-paulo](https://github.com/rladies/meetup-presentations_sao-paulo)
 
 
+
+<!-- R -->
 ---
-class: middle
+class: center
 
-# O que é R?
 
-- É uma linguagem de programação
+```{r, out.width="25%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/R_logo.svg.png")
+```
 
-- É também um software gratuito
+
+- O R é uma linguagem de programação, além de um ambiente de software gratuito. 
+
+--
+
+- oferece um vasto leque de funcionalidades, como bases de dados e integrações com outras linguagens de programação, tudo acessível via bibliotecas.
+
+--
+
+- o R possui uma comunidade extremamente ativa, engajada no aprimoramento da ferramenta, desenvolvimento de novas bibliotecas, e suporte gratuito aos usuários, por meio de fóruns, encontros e materiais.
+
+--
 
 - Saiba mais em: [r-project.org](https://www.r-project.org/about.html) 
 
-```{r, out.width="30%", fig.cap="<center><b>Logo - R </center></b>"}
-knitr::include_graphics("img/R_logo.svg.png")
-```
+
+
+<!-- ciclo de ciência de dados sem R -->
 ---
 class: middle
 
-# Pacotes
+# O Ciclo da Ciência de Dados
 
-- "Um pacote R é uma coleção de funções, dados e documentação que amplia os recursos do R base" ([WICKHAM & GROLEMUND, 2017](https://r4ds.had.co.nz/))
-
-  - [**CRAN** - The Comprehensive R Archive Network](https://cran.r-project.org/web/packages/)
-     + Mais de 14.600 pacotes disponíveis  
-     
-  - [**Bioconductor** - Open Source Software for Bioinformatics](https://www.bioconductor.org/)
-     + Mais de 1.700 pacotes disponíveis 
-     
-  - [**Github**](https://github.com/)
-     + Quantidade desconhecida!
-
-
----
-class: middle
-# Tidyverse 
-
-- Os pacotes do [tidyverse](https://www.tidyverse.org/) compartilham uma filosofia comum de dados e programação R, e são projetados para trabalhar juntos naturalmente ([WICKHAM & GROLEMUND, 2017](https://r4ds.had.co.nz/))
-
-```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
-knitr::include_graphics("img/allisonhorst/tidyverse.jpg")
-```
-
----
-class: middle
-
-# O ciclo da ciência de dados
 ```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> - Adaptado de WICKHAM & GROLEMUND, 2017</b></center>"}
-knitr::include_graphics("img/allisonhorst/data-analysis.jpg")
+knitr::include_graphics("img/allisonhorst/data-analysis_withoutR.png")
 ```
 
+
+
+<!-- ciclo de ciência de dados com R -->
 ---
 class: middle
 
-# Parte dos slides da Nath 
+# O Ciclo da Ciência de Dados
+
+```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> - Adaptado de WICKHAM & GROLEMUND, 2017</b></center>"}
+knitr::include_graphics("img/allisonhorst/data-analysis_withR.png")
+```
+
+
+<!-- communication 1 -->
 ---
 class: middle
 
-# **Quais são os principais pacotes para visualização de dados?**
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_1.png")
+```
+
+
+
+<!-- comunicação 2 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_2.png")
+```
+
+
+
+<!-- comunicação 3 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_3.png")
+```
+
+
+
+<!-- comunicação 4 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_4.png")
+```
+
+
+
+<!-- comunicação 5 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_5.png")
+```
+
+
+
+<!-- comunicação 6 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_6.png")
+```
+
+
+
+
+<!-- comunicação 7 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="70%", fig.cap="<center><b>Fonte: <a href='https://www.data-to-viz.com/'>From Data to Viz</a> </b></center>"}
+knitr::include_graphics("img/communication/communication_7.png")
+```
+
+
+
+<!-- comunicação 8 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_8.png")
+```
+
+
+
+<!-- comunicação 9 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="70%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_9.png")
+```
+
+
+
+<!-- comunicação 10 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_10.png")
+```
+
+
+
+<!-- comunicação 11 -->
+---
+class: middle
+
+# Visualização de Dados
+
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_11.png")
+```
+
+
+
+
+<!-- introdução ggplot -->
 
 ---
 class: middle
 
-# Pacote ggplot2
+# Visualização de Dados + R = ggplot2
 
 ```{r, out.width="50%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
 knitr::include_graphics("img/allisonhorst/ggplot2_obra_prima_pt.png")
 ```
+
+
+
+<!-- package ggplot -->
 ---
-class: middle
+class: center
 
-# Pacote ggplot2
-
-```{r, out.width="20%", fig.cap="<center><b>Logo: <a href='https://rmarkdown.rstudio.com'>Pacote ggplot2</a></b></center>"}
+```{r, out.width="20%", fig.cap="<center><b> </center></b>"}
 knitr::include_graphics("img/rlogos/hex-ggplot2.png")
 ```
 
 - Mantido pela [RStudio](https://rstudio.com/)
 
-- Criado pelo [Hadley Wickham](http://hadley.nz/)
+--
 
-- Possibilita a criação de diversos tipos de gráficos
+- Desenvolvida pelo [Hadley Wickham](http://hadley.nz/) durante a sua tese de doutorado, na Universidade de Iowa
+
+--
+
+- Baseado no livro The Grammar of Graphics do Leland Wilkinson (daí o `gg` do `ggplot`].
+
+--
+
+- trabalha com o mapeamento dos dados a partir de objetos geométricos e atributos estéticos, ambos trabalhados em uma lógica de camadas, similarmente ao encadeamento do Pipe (`%>%`) - porém utilizando o operador +.
 
 
----
-class: middle
 
-# Exemplos ggplot2 
+<!-- inicio exemplos -->
 
-```{r}
-library(ggplot2)
-library(gganimate)
-library(gapminder)
-theme_set(theme_bw())
-```
-
-```{r message=FALSE, warning=FALSE, out.width="40%", cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>"}
-p <- ggplot(
-  gapminder, 
-  aes(x = gdpPercap, y=lifeExp, size = pop, colour = country)
-  ) +
-  geom_point(show.legend = FALSE, alpha = 0.7) +
-  scale_color_viridis_d() +
-  scale_size(range = c(2, 12)) +
-  scale_x_log10() +
-  labs(x = "PIB per capita", y = "Expectativa de vida (anos)")
-p
-```
-
+<!-- exemplo de layout -->
 
 ---
 class: middle
 
-# Exemplos ggplot2 + gganimate
-```{r, cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>", out.width="40%"}
-p + transition_time(year) +
-  labs(title = "Ano: {frame_time}")
+# Exemplos
+
+.left-code[
+```{r plot-exemplo-ggplot2, echo=TRUE, fig.show="hide", out.width="90%"}
+  library(ggplot2)
+  ggplot(mtcars) + 
+    aes(x = hp, y = mpg, colour = cyl) +
+    geom_point(size = 2L)
+  
 ```
+]
 
----
-class: middle
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot2", "png")`)
+]
 
-# Exemplos ggplot2 + gganimate
-```{r, cache = TRUE,out.width="40%", fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>"}
-p + facet_wrap(~continent) +
-  transition_time(year) +
-  labs(title = "Ano: {frame_time}")
-```
----
-class: middle
 
-### Highcharter
 
-```{r, cache = TRUE, fig.cap="<center><b> Fonte: <a href='https://rkabacoff.github.io/datavis/Interactive.html'>Adaptado de Datavis with R </a></b></center>", out.width="25%", cache=TRUE}
 
-# create interactive line chart
-library(highcharter)
-
-# prepare data
-data(gapminder, package = "gapminder")
-library(dplyr)
-asia <- gapminder %>%
-  filter(continent == "Americas") %>%
-  select(year, country, lifeExp)
-
-# convert to long to wide format
-library(tidyr)
-plotdata <- spread(asia, country, lifeExp)
-
-# generate graph
-h <- highchart() %>% 
-  hc_xAxis(categories = plotdata$year) %>% 
-  hc_add_series(name = "Brasil", 
-                data = plotdata$Brazil) %>% 
-  hc_add_series(name = "Argentina", 
-                data = plotdata$Argentina) %>%
-  hc_add_series(name = "Paraguai", 
-                data = plotdata$Paraguay) %>%
-  hc_add_series(name = "Uruguai", 
-                data = plotdata$Uruguay) %>%
-
-  hc_title(text = "Expectativa de vida por País - Mercosul",
-           margin = 20, 
-           align = "left",
-           style = list(color = "steelblue")) %>% 
-  hc_subtitle(text = "1952 à 2007",
-              align = "left",
-              style = list(color = "#2b908f", 
-                           fontWeight = "bold")) %>% 
-  hc_credits(enabled = TRUE, # add credits
-             text = "Gapminder Data",
-             href = "http://gapminder.com") %>% 
-  hc_legend(align = "left", 
-            verticalAlign = "top",
-            layout = "vertical", 
-            x = 0, 
-            y = 100) %>%
-  hc_tooltip(crosshairs = TRUE, 
-             backgroundColor = "#FCFFC5",
-             shared = TRUE, 
-             borderWidth = 4) %>% 
-  hc_exporting(enabled = TRUE)
-
-  h
-```
-
----
-class: middle
-
-# Pacote rmarkdown
-
-```{r, out.width="50%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
-knitr::include_graphics("img/allisonhorst/rmarkdown_wizards.png")
-```
-
-
----
-class: middle
-
-# Pacote rmarkdown
-
-```{r, out.width="15%", fig.cap="<center><b>Logo: <a href='https://rmarkdown.rstudio.com'>Pacote rmarkdown</a></b></center>"}
-knitr::include_graphics("img/rlogos/hex-rmarkdown.png")
-```
-
-- Mantido pela [RStudio](https://rstudio.com/)
-
-- extensão `.Rmd`
-
-- Possibilita a utilização de códigos R, Markdown, HTML e outros.
-
-- Útil para relatórios dinâmicos!
-
-- Confira a [Galeria](https://rmarkdown.rstudio.com/gallery.html)!
-
-
----
-class: middle
-
-# Pacote rmarkdown
-
-```{r, out.width="40%", fig.cap="<center><b>Fonte: <a href='https://rmarkdown.rstudio.com'>Pacote rmarkdown</a></b></center>"}
-knitr::include_graphics("img/RMarkdownOutputFormats.png")
-```
-
-
----
-class: middle
-
-# Pacote xaringan
-
-```{r, out.width="20%", fig.cap="<center><b>Logo: <a href='https://github.com/yihui/xaringan'>Pacote xaringan</a></b></center>"}
-knitr::include_graphics("img/rlogos/hex-xaringan.png")
-```
-
-- Possibilita criar apresentações **ninja** com R Markdown
-
-- Utiliza a biblioteca remark.js
-
-- Resultado em HTML (mas também PDF - estático)
-
----
-class: middle
-
-# Pacote Shiny
-
-```{r, out.width="20%", fig.cap="<center><b>Logo: <a href='https://shiny.rstudio.com/'>Pacote Shiny</a></b></center>"}
-knitr::include_graphics("img/rlogos/hex-shiny3.jpg")
-```
-
-- Mantido pela [RStudio](https://rstudio.com/)
-
-- Dashboards interativos
-
-- Confira a [Galeria](https://shiny.rstudio.com/gallery/)!
-
----
-class: middle
-
-# Exemplo de Shiny
-
-```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração de um  <a href='https://beatriz-milz.shinyapps.io/pesquisa_periodicos/'>Shiny de consulta de Periódicos</a> </b></center>"}
-
-knitr::include_graphics("img/periodicos_exemplo.gif")
-```
-
----
-class: middle
-
-# Exemplo de Shiny
-
-```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração de um  <a href='https://apps.garrickadenbuie.com/user-2019/'>Shiny com Tweets sobre a useR!2019 Conf. </a> </b></center>"}
-
-knitr::include_graphics("img/user2019shiny.gif")
-```
-
----
-class: middle
-
-# Pacote leaflet
-
-```{r, out.width="40%", fig.cap="<center><b>Logo: <a href='https://leafletjs.com/'>Biblioteca Leaflet</a></b></center>"}
-knitr::include_graphics("img/logo-leaflet.svg")
-```
-
-- Mantido pela [RStudio](https://rstudio.com/)
-
-- É uma biblioteca javascript para criação de mapas interativos. 
-
-- O [pacote leaflet do R](https://rstudio.github.io/leaflet/) é um htmlwidget que permite gerar esses mapas de forma direta no R, para usar em documentos RMarkdown e Shiny.
-
-
-Fonte: [Post no blog da Curso-R](https://www.curso-r.com/blog/2017-02-21-markercluster/)
-
-
----
-class: middle
-
-# Exemplo - leaflet + Shiny
-
-```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração do  <a href='http://shiny.rstudio.com/gallery/superzip-example.html'>Shiny Super Zip Explorer</a> </b></center>"}
-
-knitr::include_graphics("img/shinyleaflet.gif")
-```
-
-- Código disponível no [Github - RStudio](https://github.com/rstudio/shiny-examples/tree/master/063-superzip-example)
-
-
-
----
-class: middle
-
-# PARTE PRÁTICA
-
----
-class: middle
-
-```{r, out.width="75%", fig.cap="<center><b>Fonte: <a href='https://www.data-to-viz.com/'>From Data to Viz</a> </b></center>"}
-knitr::include_graphics("img/from-data-to-viz.png")
-```
-
-
----
-class: middle
-
-```{r, out.width="50%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
-knitr::include_graphics("img/allisonhorst/community1.jpg")
-```
+<!-- rascunho Geo -->
 ---
 class: middle
 
 # Rascunho Geovana
+
+
 ---
 class: middle
 # Histograma
@@ -416,6 +385,9 @@ ggplot(df, aes(x = Horsepower))
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-hist1", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Histograma
@@ -430,6 +402,9 @@ ggplot(df, aes(x = Horsepower)) +
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-hist2", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Histograma
@@ -446,6 +421,9 @@ ggplot(df, aes(x = Horsepower)) +
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-hist3", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Histograma
@@ -466,6 +444,9 @@ ggplot(df, aes(x = Horsepower)) +
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-hist4", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Histograma
@@ -487,6 +468,8 @@ ggplot(df, aes(x = Horsepower)) +
 ![](`r knitr::fig_chunk("plot-exemplo-hist5", "png")`)
 ]
 
+
+
 ---
 class: middle
 # Gráfico de Barras
@@ -502,6 +485,8 @@ b
 ![](`r knitr::fig_chunk("plot-exemplo-bar1", "png")`)
 ]
 
+
+
 ---
 class: middle
 # Gráfico de Barras
@@ -515,6 +500,9 @@ b + geom_bar()
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bar2", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Gráfico de Barras
@@ -528,6 +516,8 @@ b + geom_bar(fill = "darkorchid4")
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bar3", "png")`)
 ]
+
+
 
 ---
 class: middle
@@ -545,6 +535,9 @@ b + geom_bar(fill = "darkorchid4") +
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bar5", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Gráfico de Barras
@@ -562,6 +555,9 @@ b + geom_bar(fill = "darkorchid4") +
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bar6", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Gráfico de Barras
@@ -581,6 +577,9 @@ bar + geom_bar(position = "dodge",
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bar7", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Gráfico de Barras
@@ -599,6 +598,8 @@ bar + geom_bar(position = "fill",
 ![](`r knitr::fig_chunk("plot-exemplo-bar8", "png")`)
 ]
 
+
+
 ---
 class: middle
 # Gráfico de Barras
@@ -616,6 +617,10 @@ bar + geom_bar(position = "stack",
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bar9", "png")`)
 ]
+
+
+
+
 ---
 class: middle
 # Gráfico de Barras
@@ -634,6 +639,9 @@ bar + geom_bar(position = "stack",
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bar10", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Boxplot
@@ -653,6 +661,9 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bpt1", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Boxplot
@@ -675,6 +686,9 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bpt2", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Boxplot
@@ -701,6 +715,9 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bpt3", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Boxplot
@@ -729,6 +746,9 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bpt4", "png")`)
 ]
+
+
+
 ---
 class: middle
 # Boxplot
@@ -756,6 +776,9 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bpt6", "png")`)
 ]
+
+
+
 ---
 
 class: middle
@@ -786,6 +809,158 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bpt7", "png")`)
 ]
+
+
+
+<!-- Outras possibilidades gráficas -->
+---
+class: middle
+
+# **Quais outras opções de pacotes para visualização de dados?**
+
+
+
+
+<!-- ggplot -->
+---
+class: middle
+
+# ggplot2 
+
+```{r}
+library(ggplot2)
+library(gganimate)
+library(gapminder)
+theme_set(theme_bw())
+```
+
+
+
+```{r message=FALSE, warning=FALSE, out.width="40%", cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>"}
+p <- ggplot(
+  gapminder, 
+  aes(x = gdpPercap, y=lifeExp, size = pop, colour = country)
+  ) +
+  geom_point(show.legend = FALSE, alpha = 0.7) +
+  scale_color_viridis_d() +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  labs(x = "PIB per capita", y = "Expectativa de vida (anos)")
+p
+```
+
+
+<!-- gganimate -->
+---
+class: middle
+
+# ggplot2 + gganimate
+```{r, cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>", out.width="40%"}
+p + transition_time(year) +
+  labs(title = "Ano: {frame_time}")
+```
+
+
+
+<!-- Highcharter -->
+---
+class: middle
+
+# Highcharter
+
+```{r, cache = T, fig.cap="<center><b> Fonte: <a href='https://rkabacoff.github.io/datavis/Interactive.html'>Adaptado de Datavis with R </a></b></center>", out.width="15%"}
+# 
+# # create interactive line chart
+# library(highcharter)
+# 
+# # prepare data
+# data(gapminder, package = "gapminder")
+# 
+# library(dplyr)
+# asia <- gapminder %>%
+#   filter(continent == "Americas") %>%
+#   select(year, country, lifeExp)
+# 
+# # convert to long to wide format
+# library(tidyr)
+# plotdata <- spread(asia, country, lifeExp)
+# 
+# # generate graph
+# h <- highchart() %>% 
+#   hc_xAxis(categories = plotdata$year) %>% 
+#   hc_add_series(name = "Brasil", 
+#                 data = plotdata$Brazil) %>% 
+#   hc_add_series(name = "Argentina", 
+#                 data = plotdata$Argentina) %>%
+#   hc_add_series(name = "Paraguai", 
+#                 data = plotdata$Paraguay) %>%
+#   hc_add_series(name = "Uruguai", 
+#                 data = plotdata$Uruguay) %>%
+#   
+#   hc_title(text = "Expectativa de vida por País - Mercosul",
+#            margin = 20, 
+#            align = "left",
+#            style = list(color = "steelblue")) %>% 
+#   hc_subtitle(text = "1952 à 2007",
+#               align = "left",
+#               style = list(color = "#2b908f", 
+#                            fontWeight = "bold")) %>% 
+#   hc_credits(enabled = TRUE, # add credits
+#              text = "Gapminder Data",
+#              href = "http://gapminder.com") %>% 
+#   hc_legend(align = "left", 
+#             verticalAlign = "top",
+#             layout = "vertical", 
+#             x = 0, 
+#             y = 100) %>%
+#   hc_tooltip(crosshairs = TRUE, 
+#              backgroundColor = "#FCFFC5",
+#              shared = TRUE, 
+#              borderWidth = 4) %>% 
+#   hc_exporting(enabled = TRUE)
+# 
+# h
+```
+
+
+<!-- shiny -->
+---
+class: middle
+
+#Shiny
+
+```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração de um  <a href='https://apps.garrickadenbuie.com/user-2019/'>Shiny com Tweets sobre a useR!2019 Conf. </a> </b></center>"}
+
+knitr::include_graphics("img/user2019shiny.gif")
+```
+
+
+<!-- leaflet -->
+---
+class: middle
+
+# Leaflet + Shiny
+
+```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração do  <a href='http://shiny.rstudio.com/gallery/superzip-example.html'>Shiny Super Zip Explorer</a> </b></center>"}
+
+knitr::include_graphics("img/shinyleaflet.gif")
+```
+
+- Código disponível no [Github - RStudio](https://github.com/rstudio/shiny-examples/tree/master/063-superzip-example)
+
+
+
+---
+class: middle
+
+# Shall we?
+
+```{r, out.width="40%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
+knitr::include_graphics("img/allisonhorst/community1.jpg")
+```
+
+
+
 ---
 class:  center, middle
 
@@ -794,6 +969,8 @@ class:  center, middle
 - Contato:
 
   - Website RLadies Global: [https://rladies.org/](https://rladies.org/)
+  
+  - MeetUp: [https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
 
   - Twitter: [@RLadiesGlobal](https://twitter.com/rladiesglobal), [@RLadiesSaoPaulo](https://twitter.com/RLadiesSaoPaulo)
 
@@ -801,31 +978,11 @@ class:  center, middle
 
   - Facebook: [@RLadiesSaoPaulo](http://facebook.com/RLadiesSaoPaulo)
 
-  - MeetUp: [https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
-
   - Github: [https://github.com/rladies/meetup-presentations_sao-paulo](https://github.com/rladies/meetup-presentations_sao-paulo)
 
   - R-Ladies LATAM Blog (Latin America) - Em breve!
 
 
-- Apresentação feita com [Xaringan](https://github.com/yihui/xaringan) e [Kunoichi](https://github.com/emitanaka/ninja-theme). Código disponível [neste repositório](https://github.com/beatrizmilz/aMostra-IME-2019-DataVis).
+- Código da apresentação disponível [neste repositório](https://github.com/beatrizmilz/aMostra-IME-2019-DataVis).
 
-- Materiais de estudo disponíveis [neste repositório](https://github.com/beatrizmilz/materiais_estudo_R)
-
-<!-------------ABAIXO: SLIDE MODELO PARA EXERCÍCIOS----------->
----
-class: middle
-
-.left-code[
-```{r plot-exemplo-ggplot2, echo=TRUE, fig.show="hide", out.width="90%"}
-library(ggplot2)
-ggplot(mtcars) +
-  aes(x = hp, y = mpg, colour = cyl) +
-  geom_point(size = 2L)
-```
-]
-
-.right-plot[
-![](`r knitr::fig_chunk("plot-exemplo-ggplot2", "png")`)
-]
 
