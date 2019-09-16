@@ -25,7 +25,7 @@ layout: true
 <a href="http://facebook.com/RLadiesSaoPaulo">Facebook</a> |
 <a href="https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo">Meetup</a> |
 <a href="https://github.com/rladies/meetup-presentations_sao-paulo">Github</a> |
-<a href="http://bit.ly/xxxx">bit.ly/xxx</a> 
+<a href="http://bit.ly/datavisR">bit.ly/datavisR</a> 
 
 
 </span></div> 
