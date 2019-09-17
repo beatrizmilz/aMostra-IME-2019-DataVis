@@ -757,9 +757,11 @@ ggplot(df, aes(x = Horsepower)) +
                  color = "black",
                  fill = "darkorchid4") +
   theme_bw() +
-  labs(x = "Frequencia", 
-       y = "Horsepower", 
-       title = "Potencia")
+  labs(x = "Nome eixo x", 
+       y = "Nome eiixo y", 
+       title = "Título",
+       subtitle = "Subtítulo",
+       caption="Fonte de Dados")
 ```
 ]
 
@@ -798,8 +800,8 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar1, echo=TRUE, fig.show="hide", out.width="90%"}
-b <- ggplot(df, aes(x = Type))
-b
+ggplot(df, aes(x = Type))
+
 ```
 ]
 
@@ -815,7 +817,8 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar2, echo=TRUE, fig.show="hide", out.width="90%"}
-b + geom_bar()
+ggplot(df, aes(x = Type))+
+  geom_bar()
 ```
 ]
 
@@ -831,7 +834,8 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar3, echo=TRUE, fig.show="hide", out.width="90%"}
-b + geom_bar(fill = "darkorchid4")
+ggplot(df, aes(x = Type))+
+  geom_bar(fill = "darkorchid4")
 ```
 ]
 
@@ -847,7 +851,8 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar5, echo=TRUE, fig.show="hide", out.width="90%"}
-b + geom_bar(fill = "darkorchid4") +
+ggplot(df, aes(x = Type))+
+  geom_bar(fill = "darkorchid4") +
   labs(x = "Tipo de carro", y = "Contagem",
        title = "Tipo de carro") +
   theme_minimal()
@@ -866,7 +871,8 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar6, echo=TRUE, fig.show="hide", out.width="90%"}
-b + geom_bar(fill = "darkorchid4") +
+ggplot(df, aes(x = Type))+
+  geom_bar(fill = "darkorchid4") +
   labs(x = "Tipo de carro", y = "Contagem",
        title = "Tipo de carro") +
   theme_minimal() +
@@ -886,9 +892,9 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar7, echo=TRUE, fig.show="hide", out.width="90%"}
-bar <- ggplot(df, aes(Type, fill = AirBags))
 
-bar + geom_bar(position = "dodge", 
+ggplot(df, aes(Type, fill = AirBags))+
+  geom_bar(position = "dodge", 
                color = "black") +
   scale_fill_brewer(palette = "Purples", 
                     direction = 1) +
@@ -908,7 +914,8 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar8, echo=TRUE, fig.show="hide", out.width="90%"}
-bar + geom_bar(position = "fill", 
+ggplot(df, aes(Type, fill = AirBags))+
+  geom_bar(position = "fill", 
                color = "black") +
   scale_fill_brewer(palette = "Purples", 
                     direction = 1) +
@@ -928,7 +935,8 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar9, echo=TRUE, fig.show="hide", out.width="90%"}
-bar + geom_bar(position = "stack", 
+ggplot(df, aes(Type, fill = AirBags))+
+  geom_bar(position = "stack", 
                color = "black") +
   scale_fill_brewer(palette = "Purples", 
                     direction = 1) +
@@ -949,7 +957,8 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar10, echo=TRUE, fig.show="hide", out.width="90%"}
-bar + geom_bar(position = "stack", 
+ggplot(df, aes(Type, fill = AirBags))+
+  geom_bar(position = "stack", 
                color = "black") +
   scale_fill_brewer(palette = "Purples", 
                     direction = 1) +
@@ -1102,8 +1111,8 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 
 
 ---
-
 class: middle
+
 # Boxplot
 
 .left-code[
@@ -1130,6 +1139,214 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 
 .right-plot[
 ![](`r knitr::fig_chunk("plot-exemplo-bpt7", "png")`)
+]
+
+
+
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp1, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg,drat))+
+  geom_point()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp1", "png")`)
+]
+
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp2, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg, drat)) +
+  geom_point() +
+  theme_classic()+
+  labs(
+    title = "Meu gráfico :)",
+    subtitle = "Gráfico de Dispersão",
+    x = "MPG",
+    y = "Drat",
+    caption = "Fonte de dados")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp2", "png")`)
+]
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp3, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg, drat)) +
+  geom_point(aes(size=drat)) +
+  theme_classic()+
+  labs(
+    title = "Meu gráfico :)",
+    subtitle = "Gráfico de Dispersão",
+    x = "MPG",
+    y = "Drat",
+    caption = "Fonte de dados")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp3", "png")`)
+]
+
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp4, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg, drat, colour=cyl)) +
+  geom_point() +
+  theme_classic()+
+  labs(
+    title = "Meu gráfico :)",
+    subtitle = "Gráfico de Dispersão",
+    x = "MPG",
+    y = "Drat",
+    caption = "Fonte de dados",
+    colour="Cilindros")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp4", "png")`)
+]
+
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp5, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg, drat)) +
+  geom_point() +
+  geom_vline(xintercept = 20, col="red")+
+  theme_classic()+
+  labs(
+    title = "Meu gráfico :)",
+    subtitle = "Gráfico de Dispersão",
+    x = "MPG",
+    y = "Drat",
+    caption = "Fonte de dados")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp5", "png")`)
+]
+
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp6, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg, drat)) +
+  geom_point() +
+  geom_hline(yintercept = 4, col="red")+
+  theme_classic()+
+  labs(
+    title = "Meu gráfico :)",
+    subtitle = "Gráfico de Dispersão",
+    x = "MPG",
+    y = "Drat",
+    caption = "Fonte de dados")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp6", "png")`)
+]
+
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp7, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg, drat)) +
+  geom_point() +
+  geom_vline(xintercept = 10:15, col="red")+
+  theme_classic()+
+  labs(
+    title = "Meu gráfico :)",
+    subtitle = "Gráfico de Dispersão",
+    x = "MPG",
+    y = "Drat",
+    caption = "Fonte de dados")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp7", "png")`)
+]
+
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp8, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg, drat)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, col="red")+
+  theme_classic()+
+  labs(
+    title = "Meu gráfico :)",
+    subtitle = "Gráfico de Dispersão",
+    x = "MPG",
+    y = "Drat",
+    caption = "Fonte de dados")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp8", "png")`)
+]
+
+---
+class: middle
+
+# Gráfico de Dispersão
+
+.left-code[
+```{r plot-exemplo-disp9, echo=TRUE, fig.show="hide", out.width="90%"}
+ggplot(mtcars, aes(mpg, drat)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE, col="red")+
+  theme_classic()+
+  labs(
+    title = "Meu gráfico :)",
+    subtitle = "Gráfico de Dispersão",
+    x = "MPG",
+    y = "Drat",
+    caption = "Fonte de dados")
+
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-disp9", "png")`)
 ]
 
 
