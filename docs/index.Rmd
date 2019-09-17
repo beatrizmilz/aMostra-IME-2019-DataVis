@@ -3,7 +3,7 @@
 # pagedown::chrome_print("docs/index.html")
 title: "Visualização de Dados com o R<br>"
 subtitle: "14ª aMostra Estatística 2019 <br><br><br><br>"
-author: "R-Ladies São Paulo"
+author: "<br><br><br><br> R-Ladies São Paulo"
 date: "19/09/2019"
 output:
   xaringan::moon_reader:
@@ -35,6 +35,10 @@ knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message=FALSE, warning
 ```
 
 ```{r libs}
+#toolbox
+ if(!require("tidyverse")){install.packages("tidyverse", dependencies = T); library(tidyverse)}
+ if(!require("MASS")){install.packages("MASS", dependencies = T); library(MASS)}
+
 #graphs
  if(!require("ggplot2")){install.packages("ggplot2", dependencies = T); library(ggplot2)}
  if(!require("gganimate")){install.packages("gganimate", dependencies = T); library(gganimate)}
@@ -42,10 +46,6 @@ knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message=FALSE, warning
 
 #create interactive line chart
  if(!require("highcharter")){install.packages("highcharter", dependencies = T); library(highcharter)}
-
-#data transformation
- if(!require("dplyr")){install.packages("dplyr", dependencies = T); library(dplyr)}
- if(!require("tidyr")){install.packages("tidyr", dependencies = T); library(tidyr)}
 
 ```
 
@@ -57,15 +57,17 @@ class: middle
 
 # Programação 
 
-- Quem são as R-Ladies?
+- As R-Ladies
 
-- E por que o R?
+- O Ciclo da Ciência de Dados
 
-- Conceitos de Comunicação
+- Visualização de Dados
 
-- Aplicação práticas
+- Aplicações
 --
 ... muitas
+
+
 
 <!-- R-Ladies -->
 ---
@@ -95,6 +97,27 @@ knitr::include_graphics("img/hexlogorladies.jpeg")
   - Instagram: [@RLadiesSaoPaulo](http://instagram.com/RLadiesSaoPaulo)
   - Facebook: [@RLadiesSaoPaulo](http://facebook.com/RLadiesSaoPaulo)
   - Github: [https://github.com/rladies/meetup-presentations_sao-paulo](https://github.com/rladies/meetup-presentations_sao-paulo)
+
+
+
+<!-- R-Ladies + Geo + Nath -->
+---
+class: middle
+
+
+```{r, out.width="15%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/R-Ladies/GeovanaLopes.jpg")
+```
+
+**<a href='https://www.linkedin.com/in/geovanalopes/'> Geovana Lopes </a>** é formada em Matemática, tem como hobby o jiu jitsu, além de ser a louca dos livros e mãe de dois gatos. Atualmente é Cientista de Dados na AlmapBBDO e cursa o bacharelado em estatística no IME-USP. Já atuou como professora de matemática na rede pública de São Paulo e também passou pelo departamento de estatística da Secretaria de Segurança Pública do Estado de São Paulo. 
+
+____
+
+```{r, out.width="15%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/R-Ladies/NathaliaDemetrio.jpg")
+```
+
+**<a href='https://www.linkedin.com/in/nathaliademetrio/'> Nathália Demetrio </a>** é bacharel em estatística pela UFPE e mestre pela USP, tem experiência em pesquisa de mídia, pela Kantar IBOPE Media, e insights 'go to market', pela VIVO, atualmente é Growth Manager na Cabify. No mais? Mãe do Guga, Conselheira eleita no Conselho Regional de Estatística (CONRE-3), viciada em brigadeiro, filmes e filosofia, e participante ativa de meio mundo de pauta. 
 
 
 
@@ -214,7 +237,7 @@ class: middle
 # Visualização de Dados
 
 ```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
-knitr::include_graphics("img/communication/communication_6.png")
+knitr::include_graphics("img/communication/communication_6_oQueFalar.png")
 ```
 
 
@@ -239,7 +262,7 @@ class: middle
 # Visualização de Dados
 
 ```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
-knitr::include_graphics("img/communication/communication_8.png")
+knitr::include_graphics("img/communication/communication_8_comoFalar.png")
 ```
 
 
@@ -250,8 +273,8 @@ class: middle
 
 # Visualização de Dados
 
-```{r, out.width="70%", fig.cap="<center><b> </center></b>"}
-knitr::include_graphics("img/communication/communication_9.png")
+```{r, out.width="60%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_9_escalaVariavel.png")
 ```
 
 
@@ -263,7 +286,7 @@ class: middle
 # Visualização de Dados
 
 ```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
-knitr::include_graphics("img/communication/communication_10.png")
+knitr::include_graphics("img/communication/communication_10_qualMensagem.png")
 ```
 
 
@@ -274,8 +297,8 @@ class: middle
 
 # Visualização de Dados
 
-```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
-knitr::include_graphics("img/communication/communication_11.png")
+```{r, out.width="100%", fig.cap="<center><b> </center></b>"}
+knitr::include_graphics("img/communication/communication_11_GrammarGraphics.png")
 ```
 
 
@@ -286,7 +309,7 @@ knitr::include_graphics("img/communication/communication_11.png")
 ---
 class: middle
 
-# Visualização de Dados + R = ggplot2
+# Visualização de Dados + ggplot2 = s2
 
 ```{r, out.width="50%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
 knitr::include_graphics("img/allisonhorst/ggplot2_obra_prima_pt.png")
@@ -302,44 +325,358 @@ class: center
 knitr::include_graphics("img/rlogos/hex-ggplot2.png")
 ```
 
+
+- Faz com o mapeamento modular dos dados, seguindo uma lógica de camadas, similarmente ao encadeamento do Pipe (`%>%`) - porém utilizando o operador +
+
+--
+
+- Desenvolvida por [Hadley Wickham](http://hadley.nz/) durante a sua tese de doutorado, na Universidade de Iowa
+
+--
+
+- Inspirada no livro "The Grammar of Graphics" do Leland Wilkinson (1999) (daí o `gg` do `ggplot`].
+
+--
+
 - Mantido pela [RStudio](https://rstudio.com/)
 
---
-
-- Desenvolvida pelo [Hadley Wickham](http://hadley.nz/) durante a sua tese de doutorado, na Universidade de Iowa
-
---
-
-- Baseado no livro The Grammar of Graphics do Leland Wilkinson (daí o `gg` do `ggplot`].
-
---
-
-- Trabalha com o mapeamento dos dados a partir de objetos geométricos e atributos estéticos, ambos trabalhados em uma lógica de camadas, similarmente ao encadeamento do Pipe (`%>%`) - porém utilizando o operador +.
 
 
-
-<!-- inicio exemplos -->
-
-<!-- exemplo de layout -->
+<!-- grammar of graphics + ggplot2 -->
 
 ---
 class: middle
 
-# Exemplos
+# Visualização de Dados 
+
+```{r, out.width="89%", fig.cap="<center><b>Fonte: <a href='http://sape.inf.usi.ch/quick-reference/ggplot2'> sape research group </a></b></center>"}
+knitr::include_graphics("img/communication/communication_11_GrammarGraphicsGgplot_0.png")
+```
+
+
+
+<!-- grammar of graphics + ggplot2 -->
+
+---
+class: middle
+
+# Visualização de Dados + ggplot2 = s2
+
+```{r, out.width="90%", fig.cap="<center><b>Fonte: <a href='http://sape.inf.usi.ch/quick-reference/ggplot2'> sape research group </a></b></center>"}
+knitr::include_graphics("img/communication/communication_11_GrammarGraphicsGgplot.png")
+```
+
+
+
+<!-- sintaxe básica do ggplot-1-1 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
 
 .left-code[
-```{r plot-exemplo-ggplot2, echo=TRUE, fig.show="hide", out.width="90%"}
-  library(ggplot2)
-  ggplot(mtcars) + 
-    aes(x = hp, y = mpg, colour = cyl) +
-    geom_point(size = 2L)
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados, aes(mapeamento dos eixos)) +
+    função_geometrica()
+
+```
+
+```{r plot-exemplo-ggplot-1-1, echo=T, fig.show="hide", comment = "  #>", collapse=T , out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1) 
+  dados
+
+  ggplot(dados) 
   
 ```
 ]
 
 .right-plot[
-![](`r knitr::fig_chunk("plot-exemplo-ggplot2", "png")`)
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-1", "png")`)
 ]
+
+
+
+
+<!-- sintaxe básica do ggplot-1-2 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados, aes(mapeamento dos eixos)) +
+    função_geometrica()
+
+```
+
+```{r plot-exemplo-ggplot-1-2, echo=T, fig.show="hide", comment = "  #>", collapse=T, out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1) 
+  dados
+
+  ggplot(dados, aes(x = var_x, y = var_y)) 
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-2", "png")`)
+]
+
+
+
+<!-- sintaxe básica do ggplot-1-3  -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados, aes(mapeamento dos eixos)) +
+    função_geometrica()
+
+```
+
+```{r plot-exemplo-ggplot-1-3, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1) 
+  dados
+
+  ggplot(dados, aes(x = var_x, y = var_y)) +
+    geom_point()
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-3", "png")`)
+]
+
+
+
+<!-- sintaxe básica do ggplot-1-4 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados) +
+    função_geometrica(aes(mapeamento dos eixos))
+
+```
+
+```{r plot-exemplo-ggplot-1-4, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1) 
+  dados
+
+  ggplot(dados, aes(x = var_x, y = var_y)) +
+    geom_point()
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-4", "png")`)
+]
+
+
+
+<!-- sintaxe básica do ggplot ggplot-1-5 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados) +
+    função_geometrica(aes(mapeamento dos eixos))
+
+```
+
+```{r plot-exemplo-ggplot-1-5, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1) 
+  dados
+
+  ggplot(dados) +
+    geom_point(aes(x = var_x, y = var_y))
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-5", "png")`)
+]
+
+
+
+<!-- sintaxe básica do ggplot-1-6 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados, aes(mapeamento dos eixos)) +
+    função_geometrica()
+
+```
+
+```{r plot-exemplo-ggplot-1-6, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1) 
+  dados
+
+  ggplot(dados, aes(x = var_x, y = var_y)) +
+    geom_point()
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-6", "png")`)
+]
+
+
+<!-- sintaxe básica do ggplot-1-6-1 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados, aes(mapeamento dos eixos)) +
+    função_geometrica()
+
+```
+
+```{r plot-exemplo-ggplot-1-6-1, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1) 
+  dados
+
+  ggplot(dados, aes(x = var_x, y = var_y)) +
+    geom_rug()
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-6-1", "png")`)
+]
+
+
+
+<!-- sintaxe básica do ggplot-1-6-2 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados, aes(mapeamento dos eixos)) +
+    função_geometrica()
+
+```
+
+```{r plot-exemplo-ggplot-1-6-2, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1,
+                  var_col = letters[1:4]) 
+  dados
+
+  ggplot(dados, aes(x = var_x, y = var_y)) +
+    geom_rug()
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-6-2", "png")`)
+]
+
+
+<!-- sintaxe básica do ggplot-1-7 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados, aes(mapeamento dos eixos)) +
+    função_geometrica()
+
+```
+
+```{r plot-exemplo-ggplot-1-7, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1,
+                  var_col = letters[1:4]) 
+  dados
+  
+  ggplot(dados, aes(x = var_x, y = var_y, 
+                    color = var_col)) +
+    geom_rug()
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-7", "png")`)
+]
+
+
+
+<!-- sintaxe básica do ggplot-1-8 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
+ #estrutura básica
+  ggplot(dados, aes(mapeamento dos eixos)) +
+    função_geometrica()
+
+```
+
+```{r plot-exemplo-ggplot-1-8, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+ #exemplo
+  dados <- tibble(var_x = 1:4, var_y = 4:1,
+                  var_col = letters[1:4]) 
+  dados
+  
+  ggplot(dados, aes(x = var_x, y = var_y)) +
+    geom_rug(aes(color = var_col))
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-8", "png")`)
+]
+
 
 
 
@@ -357,10 +694,11 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-hist1, echo=TRUE, fig.show="hide", out.width="90%"}
+library(tidyverse)
 library(ggplot2)
 library(MASS)
 
-df <- Cars93 #criando um dataframe
+df <- Cars93
 
 ggplot(df, aes(x = Horsepower)) 
 ```
