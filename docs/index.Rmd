@@ -297,7 +297,7 @@ class: middle
 
 # Visualização de Dados
 
-```{r, out.width="100%", fig.cap="<center><b> </center></b>"}
+```{r, out.width="90%", fig.cap="<center><b> </center></b>"}
 knitr::include_graphics("img/communication/communication_11_GrammarGraphics.png")
 ```
 
