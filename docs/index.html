@@ -87,9 +87,9 @@ class: middle
 
 # Programação 
 
-- As R-Ladies
+- R-Ladies
 
-- O Ciclo da Ciência de Dados
+- Ciclo da Ciência de Dados
 
 - Visualização de Dados
 
@@ -344,7 +344,7 @@ class: middle
 # Visualização de Dados
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/communication/communication_11_GrammarGraphics.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt; &amp;lt;/center&amp;gt;&amp;lt;/b&amp;gt;" width="90%" /&gt;
+&lt;img src="img/communication/communication_11_GrammarGraphics.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt; &amp;lt;/center&amp;gt;&amp;lt;/b&amp;gt;" width="80%" /&gt;
 &lt;p class="caption"&gt;&lt;center&gt;&lt;b&gt; &lt;/center&gt;&lt;/b&gt;&lt;/p&gt;
 &lt;/div&gt;
 
@@ -356,7 +356,7 @@ class: middle
 ---
 class: middle
 
-# Visualização de Dados + ggplot2 = s2
+# Visualização de Dados + R = ggplot2
 
 &lt;div class="figure" style="text-align: center"&gt;
 &lt;img src="img/allisonhorst/ggplot2_obra_prima_pt.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Ilustração por Allison Horst - Twitter: &amp;lt;a href='https://twitter.com/allison_horst/'&amp;gt; @allison_horst&amp;lt;/a&amp;gt; &amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="50%" /&gt;
@@ -399,7 +399,7 @@ class: middle
 # Visualização de Dados 
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/communication/communication_11_GrammarGraphicsGgplot_0.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Fonte: &amp;lt;a href='http://sape.inf.usi.ch/quick-reference/ggplot2'&amp;gt; sape research group &amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="89%" /&gt;
+&lt;img src="img/communication/communication_11_GrammarGraphicsGgplot_0.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Fonte: &amp;lt;a href='http://sape.inf.usi.ch/quick-reference/ggplot2'&amp;gt; sape research group &amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="90%" /&gt;
 &lt;p class="caption"&gt;&lt;center&gt;&lt;b&gt;Fonte: &lt;a href='http://sape.inf.usi.ch/quick-reference/ggplot2'&gt; sape research group &lt;/a&gt;&lt;/b&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;/div&gt;
 
@@ -410,7 +410,7 @@ class: middle
 ---
 class: middle
 
-# Visualização de Dados + ggplot2 = s2
+# Visualização de Dados + R = ggplot2 
 
 &lt;div class="figure" style="text-align: center"&gt;
 &lt;img src="img/communication/communication_11_GrammarGraphicsGgplot.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Fonte: &amp;lt;a href='http://sape.inf.usi.ch/quick-reference/ggplot2'&amp;gt; sape research group &amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="90%" /&gt;
@@ -419,7 +419,71 @@ class: middle
 
 
 
-&lt;!-- sintaxe básica do ggplot-1-1 --&gt;
+
+&lt;!-- sintaxe básica do ggplot --&gt;
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+
+```r
+  ggplot(data, aesthetics) +
+    geometries()
+```
+
+&lt;img src="img/communication/communication_11_GrammarGraphicsGgplot_sintaxe.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+
+```r
+  ggplot(data, aesthetics) +
+    geometries(statistics) +
+    facets +
+    coordinates +
+    theme
+```
+
+&lt;img src="img/communication/communication_11_GrammarGraphicsGgplot_sintaxe-2.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+
+
+
+
+
+&lt;!-- sintaxe básica do ggplot-1 --&gt;
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+
+```r
+library(tidyverse)
+
+dados &lt;- tibble(var_x = 1:4, var_y = seq(2,8,2), var_grupo = c(rep("a", 3),"b")) 
+
+summary(dados)
+  #&gt;      var_x          var_y      var_grupo        
+  #&gt;  Min.   :1.00   Min.   :2.0   Length:4          
+  #&gt;  1st Qu.:1.75   1st Qu.:3.5   Class :character  
+  #&gt;  Median :2.50   Median :5.0   Mode  :character  
+  #&gt;  Mean   :2.50   Mean   :5.0                     
+  #&gt;  3rd Qu.:3.25   3rd Qu.:6.5                     
+  #&gt;  Max.   :4.00   Max.   :8.0
+```
+
+
+
+
+&lt;!-- sintaxe básica do ggplot-1-0 --&gt;
 ---
 class: middle
 
@@ -427,26 +491,32 @@ class: middle
 
 .left-code[
 
+
 ```r
- #estrutura básica
-  ggplot(dados, aes(mapeamento dos eixos)) +
-    função_geometrica()
+#exemplo
+ ggplot(dados)
 ```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-ggplot-1-0-1.png)
+]
+
+
+
+
+&lt;!-- sintaxe básica do ggplot-1-1  --&gt;
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
 
 
 ```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1) 
-  dados
-  #&gt; # A tibble: 4 x 2
-  #&gt;   var_x var_y
-  #&gt;   &lt;int&gt; &lt;int&gt;
-  #&gt; 1     1     4
-  #&gt; 2     2     3
-  #&gt; 3     3     2
-  #&gt; 4     4     1
-
-  ggplot(dados) 
+#exemplo
+ ggplot(dados, aes(x = var_x, y = var_y)) 
 ```
 ]
 
@@ -457,7 +527,8 @@ class: middle
 
 
 
-&lt;!-- sintaxe básica do ggplot-1-2 --&gt;
+
+&lt;!-- sintaxe básica do ggplot-1-2  --&gt;
 ---
 class: middle
 
@@ -465,26 +536,11 @@ class: middle
 
 .left-code[
 
-```r
- #estrutura básica
-  ggplot(dados, aes(mapeamento dos eixos)) +
-    função_geometrica()
-```
-
 
 ```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1) 
-  dados
-  #&gt; # A tibble: 4 x 2
-  #&gt;   var_x var_y
-  #&gt;   &lt;int&gt; &lt;int&gt;
-  #&gt; 1     1     4
-  #&gt; 2     2     3
-  #&gt; 3     3     2
-  #&gt; 4     4     1
-
-  ggplot(dados, aes(x = var_x, y = var_y)) 
+#exemplo
+ ggplot(dados, aes(x = var_x, y = var_y)) +
+  geom_point()
 ```
 ]
 
@@ -492,43 +548,6 @@ class: middle
 ![](index_files/figure-html/plot-exemplo-ggplot-1-2-1.png)
 ]
 
-
-
-&lt;!-- sintaxe básica do ggplot-1-3  --&gt;
----
-class: middle
-
-# Sintaxe Básica do ggplot
-
-.left-code[
-
-```r
- #estrutura básica
-  ggplot(dados, aes(mapeamento dos eixos)) +
-    função_geometrica()
-```
-
-
-```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1) 
-  dados
-  #&gt; # A tibble: 4 x 2
-  #&gt;   var_x var_y
-  #&gt;   &lt;int&gt; &lt;int&gt;
-  #&gt; 1     1     4
-  #&gt; 2     2     3
-  #&gt; 3     3     2
-  #&gt; 4     4     1
-
-  ggplot(dados, aes(x = var_x, y = var_y)) +
-    geom_point()
-```
-]
-
-.right-plot[
-![](index_files/figure-html/plot-exemplo-ggplot-1-3-1.png)
-]
 
 
 
@@ -540,27 +559,11 @@ class: middle
 
 .left-code[
 
-```r
- #estrutura básica
-  ggplot(dados) +
-    função_geometrica(aes(mapeamento dos eixos))
-```
-
 
 ```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1) 
-  dados
-  #&gt; # A tibble: 4 x 2
-  #&gt;   var_x var_y
-  #&gt;   &lt;int&gt; &lt;int&gt;
-  #&gt; 1     1     4
-  #&gt; 2     2     3
-  #&gt; 3     3     2
-  #&gt; 4     4     1
-
-  ggplot(dados, aes(x = var_x, y = var_y)) +
-    geom_point()
+#exemplo
+ ggplot(dados) +
+  geom_point(aes(x = var_x, y = var_y))
 ```
 ]
 
@@ -578,27 +581,12 @@ class: middle
 
 .left-code[
 
-```r
- #estrutura básica
-  ggplot(dados) +
-    função_geometrica(aes(mapeamento dos eixos))
-```
-
 
 ```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1) 
-  dados
-  #&gt; # A tibble: 4 x 2
-  #&gt;   var_x var_y
-  #&gt;   &lt;int&gt; &lt;int&gt;
-  #&gt; 1     1     4
-  #&gt; 2     2     3
-  #&gt; 3     3     2
-  #&gt; 4     4     1
-
-  ggplot(dados) +
-    geom_point(aes(x = var_x, y = var_y))
+#exemplo
+ ggplot(dados) +
+  geom_point(aes(x = var_x, y = var_y, 
+                 color = var_grupo))
 ```
 ]
 
@@ -616,27 +604,11 @@ class: middle
 
 .left-code[
 
-```r
- #estrutura básica
-  ggplot(dados, aes(mapeamento dos eixos)) +
-    função_geometrica()
-```
-
 
 ```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1) 
-  dados
-  #&gt; # A tibble: 4 x 2
-  #&gt;   var_x var_y
-  #&gt;   &lt;int&gt; &lt;int&gt;
-  #&gt; 1     1     4
-  #&gt; 2     2     3
-  #&gt; 3     3     2
-  #&gt; 4     4     1
-
-  ggplot(dados, aes(x = var_x, y = var_y)) +
-    geom_point()
+#exemplo
+ ggplot(dados, aes(x = var_x, y = var_y)) +
+  geom_point(aes(color = var_grupo))
 ```
 ]
 
@@ -653,27 +625,12 @@ class: middle
 
 .left-code[
 
-```r
- #estrutura básica
-  ggplot(dados, aes(mapeamento dos eixos)) +
-    função_geometrica()
-```
-
 
 ```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1) 
-  dados
-  #&gt; # A tibble: 4 x 2
-  #&gt;   var_x var_y
-  #&gt;   &lt;int&gt; &lt;int&gt;
-  #&gt; 1     1     4
-  #&gt; 2     2     3
-  #&gt; 3     3     2
-  #&gt; 4     4     1
-
-  ggplot(dados, aes(x = var_x, y = var_y)) +
-    geom_rug()
+#exemplo
+ ggplot(dados, aes(x = var_x, y = var_y, 
+                   color = var_grupo)) +
+  geom_point()
 ```
 ]
 
@@ -681,44 +638,6 @@ class: middle
 ![](index_files/figure-html/plot-exemplo-ggplot-1-6-1-1.png)
 ]
 
-
-
-&lt;!-- sintaxe básica do ggplot-1-6-2 --&gt;
----
-class: middle
-
-# Sintaxe Básica do ggplot
-
-.left-code[
-
-```r
- #estrutura básica
-  ggplot(dados, aes(mapeamento dos eixos)) +
-    função_geometrica()
-```
-
-
-```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1,
-                  var_col = letters[1:4]) 
-  dados
-  #&gt; # A tibble: 4 x 3
-  #&gt;   var_x var_y var_col
-  #&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
-  #&gt; 1     1     4 a      
-  #&gt; 2     2     3 b      
-  #&gt; 3     3     2 c      
-  #&gt; 4     4     1 d
-
-  ggplot(dados, aes(x = var_x, y = var_y)) +
-    geom_rug()
-```
-]
-
-.right-plot[
-![](index_files/figure-html/plot-exemplo-ggplot-1-6-2-1.png)
-]
 
 
 &lt;!-- sintaxe básica do ggplot-1-7 --&gt;
@@ -729,29 +648,13 @@ class: middle
 
 .left-code[
 
-```r
- #estrutura básica
-  ggplot(dados, aes(mapeamento dos eixos)) +
-    função_geometrica()
-```
-
 
 ```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1,
-                  var_col = letters[1:4]) 
-  dados
-  #&gt; # A tibble: 4 x 3
-  #&gt;   var_x var_y var_col
-  #&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
-  #&gt; 1     1     4 a      
-  #&gt; 2     2     3 b      
-  #&gt; 3     3     2 c      
-  #&gt; 4     4     1 d
-  
-  ggplot(dados, aes(x = var_x, y = var_y, 
-                    color = var_col)) +
-    geom_rug()
+#exemplo
+ ggplot(dados, aes(x = var_x, y = var_y, 
+                   color = var_grupo)) +
+  geom_point() +
+  facet_grid(.~var_grupo)
 ```
 ]
 
@@ -769,28 +672,13 @@ class: middle
 
 .left-code[
 
-```r
- #estrutura básica
-  ggplot(dados, aes(mapeamento dos eixos)) +
-    função_geometrica()
-```
-
 
 ```r
- #exemplo
-  dados &lt;- tibble(var_x = 1:4, var_y = 4:1,
-                  var_col = letters[1:4]) 
-  dados
-  #&gt; # A tibble: 4 x 3
-  #&gt;   var_x var_y var_col
-  #&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
-  #&gt; 1     1     4 a      
-  #&gt; 2     2     3 b      
-  #&gt; 3     3     2 c      
-  #&gt; 4     4     1 d
-  
-  ggplot(dados, aes(x = var_x, y = var_y)) +
-    geom_rug(aes(color = var_col))
+#exemplo
+ ggplot(dados, aes(x = var_x, y = var_y, 
+                   color = var_grupo)) +
+  geom_label(aes(label=var_x)) +
+  facet_grid(.~var_grupo)
 ```
 ]
 
@@ -800,41 +688,143 @@ class: middle
 
 
 
-
-
-&lt;!-- rascunho Geo --&gt;
+&lt;!-- sintaxe básica do ggplot-1-9 --&gt;
 ---
 class: middle
 
-# Rascunho Geovana
-
-
----
-class: middle
-# Histograma
+# Sintaxe Básica do ggplot
 
 .left-code[
 
+
 ```r
-library(tidyverse)
+#exemplo
+ ggplot(dados, aes(x = var_x, y = var_y, 
+                   color = var_grupo,
+                   label = var_x)) +
+  geom_point() +
+  geom_label() +
+  facet_grid(.~var_grupo)
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-ggplot-1-9-1.png)
+]
+
+
+
+&lt;!-- sintaxe básica do ggplot-1-10 --&gt;
+---
+class: middle
+
+# Sintaxe Básica do ggplot
+
+.left-code[
+
+
+```r
+#exemplo
+ ggplot(dados, aes(x = var_x, y = var_y, 
+                   color = var_grupo,
+                   label = var_x)) +
+  geom_point() +
+  geom_label() +
+  facet_grid(.~var_grupo) +
+  theme_dark()
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-ggplot-1-10-1.png)
+]
+
+
+
+
+
+&lt;!-- aplicações --&gt;
+---
+class: middle
+
+# Aplicações
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/allisonhorst/ggplot2_visual.jpg" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Ilustração por Allison Horst - Twitter: &amp;lt;a href='https://twitter.com/allison_horst/'&amp;gt; @allison_horst&amp;lt;/a&amp;gt; &amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="30%" /&gt;
+&lt;p class="caption"&gt;&lt;center&gt;&lt;b&gt;Ilustração por Allison Horst - Twitter: &lt;a href='https://twitter.com/allison_horst/'&gt; @allison_horst&lt;/a&gt; &lt;/b&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- Base de Dados Cars93 --&gt;
+---
+class: middle
+
+# Base de Dados Cars93
+
+```r
+
 library(ggplot2)
 library(MASS)
 
 df &lt;- Cars93
 
+str(df)
+  #&gt; 'data.frame':	93 obs. of  27 variables:
+  #&gt;  $ Manufacturer      : Factor w/ 32 levels "Acura","Audi",..: 1 1 2 2 3 4 4 4 4 5 ...
+  #&gt;  $ Model             : Factor w/ 93 levels "100","190E","240",..: 49 56 9 1 6 24 54 74 73 35 ...
+  #&gt;  $ Type              : Factor w/ 6 levels "Compact","Large",..: 4 3 1 3 3 3 2 2 3 2 ...
+  #&gt;  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+  #&gt;  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+  #&gt;  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+  #&gt;  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+  #&gt;  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+  #&gt;  $ AirBags           : Factor w/ 3 levels "Driver &amp; Passenger",..: 3 1 2 1 2 2 2 2 2 2 ...
+  #&gt;  $ DriveTrain        : Factor w/ 3 levels "4WD","Front",..: 2 2 2 2 3 2 2 3 2 2 ...
+  #&gt;  $ Cylinders         : Factor w/ 6 levels "3","4","5","6",..: 2 4 4 4 2 2 4 4 4 5 ...
+  #&gt;  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+  #&gt;  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+  #&gt;  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+  #&gt;  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+  #&gt;  $ Man.trans.avail   : Factor w/ 2 levels "No","Yes": 2 2 2 2 2 1 1 1 1 1 ...
+  #&gt;  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+  #&gt;  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+  #&gt;  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+  #&gt;  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+  #&gt;  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+  #&gt;  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+  #&gt;  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+  #&gt;  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+  #&gt;  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+  #&gt;  $ Origin            : Factor w/ 2 levels "USA","non-USA": 2 2 2 2 2 1 1 1 1 1 ...
+  #&gt;  $ Make              : Factor w/ 93 levels "Acura Integra",..: 1 2 4 3 5 6 7 9 8 10 ...
+```
+
+
+&lt;!-- Base de Dados Cars93 + Histogram--&gt;
+
+---
+class: middle
+
+# Base de Dados Cars93
+
+.left-code[
+
+```r
 ggplot(df, aes(x = Horsepower)) 
 ```
 ]
 
 .right-plot[
-![](index_files/figure-html/plot-exemplo-hist1-1.png)
+![](index_files/figure-html/plot-exemplo-hist1.1-1.png)
 ]
 
 
 
 ---
 class: middle
-# Histograma
+
+# Base de Dados Cars93 + Histograma
 
 .left-code[
 
@@ -852,15 +842,14 @@ ggplot(df, aes(x = Horsepower)) +
 
 ---
 class: middle
-# Histograma
+
+# Base de Dados Cars93 + Histograma
 
 .left-code[
 
 ```r
 ggplot(df, aes(x = Horsepower)) +
-  geom_histogram(binwidth  = 5,
-                 color = "black",
-                 fill = "darkorchid4")
+  geom_histogram(binwidth = 10)
 ```
 ]
 
@@ -872,13 +861,57 @@ ggplot(df, aes(x = Horsepower)) +
 
 ---
 class: middle
-# Histograma
+
+# Base de Dados Cars93 + Histograma
 
 .left-code[
 
 ```r
 ggplot(df, aes(x = Horsepower)) +
-  geom_histogram(binwidth  = 5,
+  geom_histogram(binwidth = 10,
+                 color = "black",
+                 fill = "darkorchid4")
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-hist3.1-1.png)
+]
+
+
+
+---
+class: middle
+
+# Base de Dados Cars93 + Histograma
+
+.left-code[
+
+```r
+ggplot(df, aes(x = Horsepower)) +
+  geom_histogram(binwidth = 10,
+                 color = "black",
+                 fill = "darkorchid4") +
+  theme_bw() 
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-hist4-1.png)
+]
+
+
+
+---
+class: middle
+
+# Base de Dados Cars93 + Histograma
+
+.left-code[
+
+```r
+ggplot(df, aes(x = Horsepower)) +
+  geom_histogram(binwidth = 10,
                  color = "black",
                  fill = "darkorchid4") +
   theme_bw() +
@@ -891,14 +924,15 @@ ggplot(df, aes(x = Horsepower)) +
 ]
 
 .right-plot[
-![](index_files/figure-html/plot-exemplo-hist4-1.png)
+![](index_files/figure-html/plot-exemplo-hist4.1-1.png)
 ]
 
 
 
 ---
 class: middle
-# Histograma
+
+# Base de Dados Cars93 + Histograma
 
 .left-code[
 
@@ -920,9 +954,12 @@ ggplot(df, aes(x = Horsepower)) +
 
 
 
+
+&lt;!-- Base de Dados Cars93 + Gráfico de Barras--&gt;
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 
 
 .left-code[
 
@@ -939,12 +976,13 @@ ggplot(df, aes(x = Type))
 
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 + Gráfico de Barras
 
 .left-code[
 
 ```r
-ggplot(df, aes(x = Type))+
+ggplot(df, aes(x = Type)) +
   geom_bar()
 ```
 ]
@@ -957,12 +995,13 @@ ggplot(df, aes(x = Type))+
 
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 + Gráfico de Barras
 
 .left-code[
 
 ```r
-ggplot(df, aes(x = Type))+
+ggplot(df, aes(x = Type)) +
   geom_bar(fill = "darkorchid4")
 ```
 ]
@@ -975,16 +1014,16 @@ ggplot(df, aes(x = Type))+
 
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 + Gráfico de Barras
 
 .left-code[
 
 ```r
-ggplot(df, aes(x = Type))+
+ggplot(df, aes(x = Type)) +
   geom_bar(fill = "darkorchid4") +
   labs(x = "Tipo de carro", y = "Contagem",
-       title = "Tipo de carro") +
-  theme_minimal()
+       title = "Tipo de carro") 
 ```
 ]
 
@@ -996,12 +1035,35 @@ ggplot(df, aes(x = Type))+
 
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 + Gráfico de Barras
 
 .left-code[
 
 ```r
-ggplot(df, aes(x = Type))+
+ggplot(df, aes(x = Type)) +
+  geom_bar(fill = "darkorchid4") +
+  labs(x = "Tipo de carro", y = "Contagem",
+       title = "Tipo de carro") +
+  theme_minimal()
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-bar5.1-1.png)
+]
+
+
+
+---
+class: middle
+
+# Base de Dados Cars93 + Gráfico de Barras
+
+.left-code[
+
+```r
+ggplot(df, aes(x = Type)) +
   geom_bar(fill = "darkorchid4") +
   labs(x = "Tipo de carro", y = "Contagem",
        title = "Tipo de carro") +
@@ -1018,16 +1080,15 @@ ggplot(df, aes(x = Type))+
 
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 + Gráfico de Barras
 
 .left-code[
 
 ```r
-ggplot(df, aes(Type, fill = AirBags))+
+ggplot(df, aes(x = Type, fill = AirBags)) +
   geom_bar(position = "dodge", 
                color = "black") +
-  scale_fill_brewer(palette = "Purples", 
-                    direction = 1) +
   theme_minimal()
 ```
 ]
@@ -1040,17 +1101,41 @@ ggplot(df, aes(Type, fill = AirBags))+
 
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 + Gráfico de Barras
 
 .left-code[
 
 ```r
-ggplot(df, aes(Type, fill = AirBags))+
+ggplot(df, aes(x = Type, fill = AirBags)) +
+  geom_bar(position = "dodge", 
+               color = "black") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Purples", 
+                    direction = 1)
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-bar7.1-1.png)
+]
+
+
+
+---
+class: middle
+
+# Base de Dados Cars93 + Gráfico de Barras
+
+.left-code[
+
+```r
+ggplot(df, aes(x = Type, fill = AirBags))+
   geom_bar(position = "fill", 
                color = "black") +
+  theme_minimal() +
   scale_fill_brewer(palette = "Purples", 
-                    direction = 1) +
-  theme_minimal()
+                    direction = 1)
 ```
 ]
 
@@ -1062,17 +1147,18 @@ ggplot(df, aes(Type, fill = AirBags))+
 
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 + Gráfico de Barras
 
 .left-code[
 
 ```r
-ggplot(df, aes(Type, fill = AirBags))+
+ggplot(df, aes(x = Type, fill = AirBags))+
   geom_bar(position = "stack", 
                color = "black") +
+  theme_minimal() +
   scale_fill_brewer(palette = "Purples", 
-                    direction = 1) +
-  theme_minimal()
+                    direction = 1)
 ```
 ]
 
@@ -1085,17 +1171,18 @@ ggplot(df, aes(Type, fill = AirBags))+
 
 ---
 class: middle
-# Gráfico de Barras
+
+# Base de Dados Cars93 + Gráfico de Barras
 
 .left-code[
 
 ```r
-ggplot(df, aes(Type, fill = AirBags))+
+ggplot(df, aes(x = Type, fill = AirBags))+
   geom_bar(position = "stack", 
                color = "black") +
+  theme_minimal() +
   scale_fill_brewer(palette = "Purples", 
                     direction = 1) +
-  theme_minimal() +
   coord_flip()
 ```
 ]
@@ -1106,15 +1193,38 @@ ggplot(df, aes(Type, fill = AirBags))+
 
 
 
+
+&lt;!-- Base de Dados dfhair + boxplot --&gt;
 ---
 class: middle
-# Boxplot
+
+# Base de Dados dfhair
+
+
+```r
+library(tidyverse)
+
+dfhair &lt;- data.frame(HairEyeColor)
+
+glimpse(dfhair)
+  #&gt; Observations: 32
+  #&gt; Variables: 4
+  #&gt; $ Hair &lt;fct&gt; Black, Brown, Red, Blond, Black, Brown, Red, Blond, Black...
+  #&gt; $ Eye  &lt;fct&gt; Brown, Brown, Brown, Brown, Blue, Blue, Blue, Blue, Hazel...
+  #&gt; $ Sex  &lt;fct&gt; Male, Male, Male, Male, Male, Male, Male, Male, Male, Mal...
+  #&gt; $ Freq &lt;dbl&gt; 32, 53, 10, 3, 11, 50, 10, 30, 10, 25, 7, 5, 3, 15, 7, 8,...
+```
+
+
+
+---
+class: middle
+
+# Base de Dados dfhair + Boxplot
 
 .left-code[
 
 ```r
-dfhair &lt;- data.frame(HairEyeColor)
-
 ggplot(dfhair, aes(x = as.factor(Sex), y = Freq, 
                    fill = Sex)) +
   theme_minimal() +
@@ -1123,14 +1233,15 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ]
 
 .right-plot[
-![](index_files/figure-html/plot-exemplo-bpt1-1.png)
+![](index_files/figure-html/plot-exemplo-bpt2-1.png)
 ]
 
 
 
 ---
 class: middle
-# Boxplot
+
+# Base de Dados dfhair + Boxplot
 
 .left-code[
 
@@ -1148,14 +1259,15 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ]
 
 .right-plot[
-![](index_files/figure-html/plot-exemplo-bpt2-1.png)
+![](index_files/figure-html/plot-exemplo-bpt2.1-1.png)
 ]
 
 
 
 ---
 class: middle
-# Boxplot
+
+# Base de Dados dfhair + Boxplot
 
 .left-code[
 
@@ -1184,7 +1296,8 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 
 ---
 class: middle
-# Boxplot
+
+# Base de Dados dfhair + Boxplot
 
 .left-code[
 
@@ -1215,7 +1328,8 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 
 ---
 class: middle
-# Boxplot
+
+# Base de Dados dfhair + Boxplot
 
 .left-code[
 
@@ -1247,7 +1361,7 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ---
 class: middle
 
-# Boxplot
+# Base de Dados dfhair + Boxplot
 
 .left-code[
 
@@ -1278,15 +1392,39 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 
 
 
+&lt;!-- Base de Dados mtcars + gráf dispersão --&gt;
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars
+
+```r
+glimpse(mtcars)
+  #&gt; Observations: 32
+  #&gt; Variables: 11
+  #&gt; $ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19....
+  #&gt; $ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, ...
+  #&gt; $ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 1...
+  #&gt; $ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, ...
+  #&gt; $ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.9...
+  #&gt; $ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3...
+  #&gt; $ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 2...
+  #&gt; $ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, ...
+  #&gt; $ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, ...
+  #&gt; $ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, ...
+  #&gt; $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, ...
+```
+
+
+---
+class: middle
+
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
-ggplot(mtcars, aes(mpg,drat))+
+ggplot(mtcars, aes(mpg, drat))+
   geom_point()
 ```
 ]
@@ -1295,17 +1433,19 @@ ggplot(mtcars, aes(mpg,drat))+
 ![](index_files/figure-html/plot-exemplo-disp1-1.png)
 ]
 
+
+
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
 ggplot(mtcars, aes(mpg, drat)) +
   geom_point() +
-  theme_classic()+
+  theme_classic() +
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
@@ -1318,17 +1458,20 @@ ggplot(mtcars, aes(mpg, drat)) +
 .right-plot[
 ![](index_files/figure-html/plot-exemplo-disp2-1.png)
 ]
+
+
+
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
 ggplot(mtcars, aes(mpg, drat)) +
-  geom_point(aes(size=drat)) +
-  theme_classic()+
+  geom_point(aes(size = drat)) +
+  theme_classic() +
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
@@ -1342,17 +1485,19 @@ ggplot(mtcars, aes(mpg, drat)) +
 ![](index_files/figure-html/plot-exemplo-disp3-1.png)
 ]
 
+
+
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
-ggplot(mtcars, aes(mpg, drat, colour=cyl)) +
+ggplot(mtcars, aes(mpg, drat, colour = cyl)) +
   geom_point() +
-  theme_classic()+
+  theme_classic() +
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
@@ -1367,24 +1512,26 @@ ggplot(mtcars, aes(mpg, drat, colour=cyl)) +
 ![](index_files/figure-html/plot-exemplo-disp4-1.png)
 ]
 
+
+
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
 ggplot(mtcars, aes(mpg, drat)) +
   geom_point() +
-  geom_vline(xintercept = 20, col="red")+
-  theme_classic()+
+  theme_classic() +
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
     x = "MPG",
     y = "Drat",
-    caption = "Fonte de dados")
+    caption = "Fonte de dados") +
+  geom_vline(xintercept = 20, col="red") 
 ```
 ]
 
@@ -1392,24 +1539,26 @@ ggplot(mtcars, aes(mpg, drat)) +
 ![](index_files/figure-html/plot-exemplo-disp5-1.png)
 ]
 
+
+
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
 ggplot(mtcars, aes(mpg, drat)) +
   geom_point() +
-  geom_hline(yintercept = 4, col="red")+
-  theme_classic()+
+  theme_classic() +
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
     x = "MPG",
     y = "Drat",
-    caption = "Fonte de dados")
+    caption = "Fonte de dados") +
+  geom_hline(yintercept = 4, col="red") 
 ```
 ]
 
@@ -1417,24 +1566,26 @@ ggplot(mtcars, aes(mpg, drat)) +
 ![](index_files/figure-html/plot-exemplo-disp6-1.png)
 ]
 
+
+
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
 ggplot(mtcars, aes(mpg, drat)) +
   geom_point() +
-  geom_vline(xintercept = 10:15, col="red")+
-  theme_classic()+
+  theme_classic() +
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
     x = "MPG",
     y = "Drat",
-    caption = "Fonte de dados")
+    caption = "Fonte de dados") +
+  geom_vline(xintercept = 10:15, col="red") 
 ```
 ]
 
@@ -1442,24 +1593,26 @@ ggplot(mtcars, aes(mpg, drat)) +
 ![](index_files/figure-html/plot-exemplo-disp7-1.png)
 ]
 
+
+
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
 ggplot(mtcars, aes(mpg, drat)) +
   geom_point() +
-  geom_smooth(method = "lm", se = FALSE, col="red")+
   theme_classic()+
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
     x = "MPG",
     y = "Drat",
-    caption = "Fonte de dados")
+    caption = "Fonte de dados") +
+  geom_smooth(method = "lm", se = FALSE, col="red") 
 ```
 ]
 
@@ -1467,24 +1620,26 @@ ggplot(mtcars, aes(mpg, drat)) +
 ![](index_files/figure-html/plot-exemplo-disp8-1.png)
 ]
 
+
+
 ---
 class: middle
 
-# Gráfico de Dispersão
+# Base de Dados mtcars + Gráfico de Dispersão
 
 .left-code[
 
 ```r
 ggplot(mtcars, aes(mpg, drat)) +
   geom_point() +
-  geom_smooth(method = "lm", se = TRUE, col="red")+
-  theme_classic()+
+  theme_classic() +
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
     x = "MPG",
     y = "Drat",
-    caption = "Fonte de dados")
+    caption = "Fonte de dados") +
+  geom_smooth(method = "lm", se = TRUE, col="red")
 ```
 ]
 
@@ -1494,12 +1649,209 @@ ggplot(mtcars, aes(mpg, drat)) +
 
 
 
+
+&lt;!-- Base de Dados XXX + Series Temporais--&gt;
+---
+class: middle
+
+# Base de Dados XXX
+
+
+```r
+"descritiva dos dados"
+  #&gt; [1] "descritiva dos dados"
+```
+
+
+
+---
+class: middle
+
+# Base de Dados XXX + Series Temporais
+
+.left-code[
+
+```r
+"plot"
+  #&gt; [1] "plot"
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-xxx-1.png)
+]
+
+
+
+
+
+&lt;!-- Base de Dados XXX + Heatmap --&gt;
+---
+class: middle
+
+# Base de Dados XXX
+
+
+```r
+"descritiva dos dados"
+  #&gt; [1] "descritiva dos dados"
+```
+
+
+---
+class: middle
+
+# Base de Dados XXX + Heatmap
+
+.left-code[
+
+```r
+library(viridis)
+counts &lt;- diamonds %&gt;% 
+  count(color, cut)
+
+ggplot(counts, aes(color, y = cut, fill = n)) +
+    geom_tile() +
+    scale_fill_viridis() # use a better color palette is one option for better viz
+
+
+#dois
+counts2 &lt;- counts %&gt;%
+    group_by(color) %&gt;%
+    mutate(total = sum(n),
+           prop = n / total)
+    
+ggplot(counts2, aes(color, cut, fill = prop)) +
+    geom_tile() +
+    scale_fill_viridis()
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-heatmap-1.png)
+]
+
+
+
+
+
+&lt;!-- Base de Dados XXX + Correlagrama --&gt;
+---
+class: middle
+
+# Base de Dados XXX
+
+
+```r
+"descritiva dos dados"
+  #&gt; [1] "descritiva dos dados"
+```
+
+---
+class: middle
+
+# Base de Dados XXX + Correlagrama
+
+.left-code[
+
+```r
+library(GGally)
+
+small_diamonds &lt;- sample_n(diamonds, 500)
+ggpairs(small_diamonds, columns = c(1,3,5))
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-corr-1.png)
+]
+
+
+
+
+
+
+&lt;!-- Base de Dados XXX + plotly --&gt;
+---
+class: middle
+
+# Base de Dados XXX
+
+
+```r
+"descritiva dos dados"
+  #&gt; [1] "descritiva dos dados"
+```
+
+
+---
+class: middle
+
+# Base de Dados XXX + plotly
+
+.left-code[
+
+```r
+library(plotly)
+
+set.seed(100)
+d &lt;- diamonds[sample(nrow(diamonds), 1000), ]
+
+p &lt;- ggplot(data = d, aes(x = carat, y = price)) +
+  geom_point(aes(text = paste("Clarity:", clarity)), size = 4) +
+  geom_smooth(aes(colour = cut, fill = cut)) + facet_wrap(~ cut)
+
+p &lt;- ggplotly(p)
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-plotly-1.png)
+]
+
+
+
+
+&lt;!-- Base de Dados XXX + esquisse --&gt;
+---
+class: middle
+
+# Base de Dados XXX
+
+
+```r
+"descritiva dos dados"
+  #&gt; [1] "descritiva dos dados"
+```
+
+
+---
+class: middle
+
+# Para resolver todos os seus problemas
+
+.left-code[
+
+```r
+library(esquisse)
+```
+]
+
+.right-plot[
+![](index_files/figure-html/plot-exemplo-esquisse-1.png)
+]
+
+
+
+
+
+
+
 &lt;!-- Outras possibilidades gráficas --&gt;
 ---
 class: middle
 
 # **Quais outras opções de pacotes para visualização de dados?**
-
 
 
 
@@ -1514,7 +1866,7 @@ class: middle
 
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="index_files/figure-html/unnamed-chunk-33-1.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Fonte: &amp;lt;a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'&amp;gt;Adaptado de Data Novia&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="40%" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-29-1.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Fonte: &amp;lt;a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'&amp;gt;Adaptado de Data Novia&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="40%" /&gt;
 &lt;p class="caption"&gt;&lt;center&gt;&lt;b&gt;Fonte: &lt;a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'&gt;Adaptado de Data Novia&lt;/a&gt;&lt;/b&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;/div&gt;
 
@@ -1525,7 +1877,7 @@ class: middle
 
 # ggplot2 + gganimate
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="index_files/figure-html/unnamed-chunk-34-1.gif" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Fonte: &amp;lt;a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'&amp;gt;Adaptado de Data Novia&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="40%" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-30-1.gif" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Fonte: &amp;lt;a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'&amp;gt;Adaptado de Data Novia&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="40%" /&gt;
 &lt;p class="caption"&gt;&lt;center&gt;&lt;b&gt;Fonte: &lt;a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'&gt;Adaptado de Data Novia&lt;/a&gt;&lt;/b&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;/div&gt;
 
@@ -1537,8 +1889,8 @@ class: middle
 
 # Highcharter
 
-<div id="htmlwidget-269068b41157855d7cd0" style="width:100%;height:500px;" class="highchart html-widget"></div>
-<script type="application/json" data-for="htmlwidget-269068b41157855d7cd0">{"x":{"hc_opts":{"title":{"text":"Expectativa de vida por País - Mercosul - <center><b> Fonte: <a href='https://rkabacoff.github.io/datavis/Interactive.html'>Adaptado de Datavis with R <\/a><\/b><\/center>","margin":20,"align":"left","style":{"color":"steelblue"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":true,"text":"Gapminder Data","href":"http://gapminder.com"},"exporting":{"enabled":true},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"}},"xAxis":{"categories":[1952,1957,1962,1967,1972,1977,1982,1987,1992,1997,2002,2007]},"series":[{"data":[50.917,53.285,55.665,57.632,59.504,61.489,63.336,65.205,67.057,69.388,71.006,72.39],"name":"Brasil"},{"data":[62.485,64.399,65.142,65.634,67.065,68.481,69.942,70.774,71.868,73.275,74.34,75.32],"name":"Argentina"},{"data":[62.649,63.196,64.361,64.951,65.815,66.353,66.874,67.378,68.225,69.4,70.755,71.752],"name":"Paraguai"},{"data":[66.071,67.044,68.253,68.468,68.673,69.481,70.805,71.918,72.752,74.223,75.307,76.384],"name":"Uruguai"}],"subtitle":{"text":"1952 à 2007","align":"left","style":{"color":"#2b908f","fontWeight":"bold"}},"legend":{"align":"left","verticalAlign":"top","layout":"vertical","x":0,"y":100},"tooltip":{"crosshairs":true,"backgroundColor":"#FCFFC5","shared":true,"borderWidth":4}},"theme":{"chart":{"backgroundColor":"transparent"}},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","drillUpText":"Back to {series.name}","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"thousandsSep":" ","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-19086719331c47d6bca6" style="width:100%;height:500px;" class="highchart html-widget"></div>
+<script type="application/json" data-for="htmlwidget-19086719331c47d6bca6">{"x":{"hc_opts":{"title":{"text":"Expectativa de vida por País - Mercosul - <center><b> Fonte: <a href='https://rkabacoff.github.io/datavis/Interactive.html'>Adaptado de Datavis with R <\/a><\/b><\/center>","margin":20,"align":"left","style":{"color":"steelblue"}},"yAxis":{"title":{"text":null}},"credits":{"enabled":true,"text":"Gapminder Data","href":"http://gapminder.com"},"exporting":{"enabled":true},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"}},"xAxis":{"categories":[1952,1957,1962,1967,1972,1977,1982,1987,1992,1997,2002,2007]},"series":[{"data":[50.917,53.285,55.665,57.632,59.504,61.489,63.336,65.205,67.057,69.388,71.006,72.39],"name":"Brasil"},{"data":[62.485,64.399,65.142,65.634,67.065,68.481,69.942,70.774,71.868,73.275,74.34,75.32],"name":"Argentina"},{"data":[62.649,63.196,64.361,64.951,65.815,66.353,66.874,67.378,68.225,69.4,70.755,71.752],"name":"Paraguai"},{"data":[66.071,67.044,68.253,68.468,68.673,69.481,70.805,71.918,72.752,74.223,75.307,76.384],"name":"Uruguai"}],"subtitle":{"text":"1952 à 2007","align":"left","style":{"color":"#2b908f","fontWeight":"bold"}},"legend":{"align":"left","verticalAlign":"top","layout":"vertical","x":0,"y":100},"tooltip":{"crosshairs":true,"backgroundColor":"#FCFFC5","shared":true,"borderWidth":4}},"theme":{"chart":{"backgroundColor":"transparent"}},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","drillUpText":"Back to {series.name}","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"thousandsSep":" ","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
 
 
 &lt;!-- shiny --&gt;
