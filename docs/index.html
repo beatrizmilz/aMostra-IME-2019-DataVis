@@ -942,8 +942,14 @@ ggplot(df, aes(x = Horsepower)) +
 .right-plot[
 ![](index_files/figure-html/plot-exemplo-hist5-1.png)
 ]
+---
+class: middle
 
+# Base de Dados Cars93 + Histograma
 
+## Exercício
+
+Criar um histograma a partir de alguma variável da base Cars93, com no máximo 5 barras, com título, subtítulo e nome dos eixos x e y.
 
 
 &lt;!-- Base de Dados Cars93 + Gráfico de Barras--&gt;
@@ -1182,14 +1188,21 @@ ggplot(df, aes(x = Type, fill = AirBags)) +
 ![](index_files/figure-html/plot-exemplo-bar10-1.png)
 ]
 
-
-
-
-&lt;!-- Base de Dados dfhair + boxplot --&gt;
 ---
 class: middle
 
-# Base de Dados dfhair
+# Base de Dados Cars93 + Gráfico de Barras
+
+## Exercício
+
+Criar um gráfico de barras, usando umas das opções 'position' (fill, dodge ou stack), alterando o 'theme' e inserindo título, subtítulo e nomes dos eixos x e y.
+
+
+&lt;!-- Base de Dados HairEyeColor + boxplot --&gt;
+---
+class: middle
+
+# Base de Dados HairEyeColor
 
 
 ```r
@@ -1216,7 +1229,7 @@ glimpse(dfhair)
 ---
 class: middle
 
-# Base de Dados dfhair + Boxplot
+# Base de Dados HairEyeColor + Boxplot
 
 .left-code[
 
@@ -1237,7 +1250,7 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ---
 class: middle
 
-# Base de Dados dfhair + Boxplot
+# Base de Dados HairEyeColor + Boxplot
 
 .left-code[
 
@@ -1263,7 +1276,7 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ---
 class: middle
 
-# Base de Dados dfhair + Boxplot
+# Base de Dados HairEyeColor + Boxplot
 
 .left-code[
 
@@ -1293,7 +1306,7 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ---
 class: middle
 
-# Base de Dados dfhair + Boxplot
+# Base de Dados HairEyeColor + Boxplot
 
 .left-code[
 
@@ -1325,7 +1338,7 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ---
 class: middle
 
-# Base de Dados dfhair + Boxplot
+# Base de Dados HairEyeColor + Boxplot
 
 .left-code[
 
@@ -1357,7 +1370,7 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ---
 class: middle
 
-# Base de Dados dfhair + Boxplot
+# Base de Dados HairEyeColor + Boxplot
 
 .left-code[
 
@@ -1386,7 +1399,14 @@ ggplot(dfhair, aes(x = as.factor(Sex), y = Freq,
 ![](index_files/figure-html/plot-exemplo-bpt7-1.png)
 ]
 
+---
+class: middle
 
+# Base de Dados HairEyeColor + Boxplot
+
+## Exercício
+
+Criar um boxplot a partir da base de dados 'hairEyeColor', alterando a cor, evidenciando outliers quando houver e inserindo título, subtítulo e nomes dos eixos x e y.
 
 &lt;!-- Base de Dados mtcars + gráf dispersão --&gt;
 ---
@@ -1645,6 +1665,14 @@ ggplot(mtcars, aes(mpg, drat)) +
 ]
 
 
+---
+class: middle
+
+# Base de Dados mtcars + Gráfico de Dispersão
+
+## Exercício
+
+Criar um gráfico de dispersão a partir da base 'mtcars' e usando o geom_smooth
 
 
 &lt;!-- Base de Dados XXX + Series Temporais--&gt;
@@ -1795,11 +1823,21 @@ ggplot(meudataset,
 .right-plot[
 ![](index_files/figure-html/plot-exemplo-st4-1.png)
 ]
+---
+class: middle
+
+# Base de Dados Ações + Series Temporais
+
+## Exercício
+
+Criar um gráfico a partir da série dos dados extraídos do mercado de ações e dividindo o eixo x em intervalos de 1 mês. 
+
 
 &lt;!-- Base de Dados XXX + Heatmap --&gt;
 ---
 class: middle
 
+<<<<<<< HEAD
 # Base de Dados Happy
 
 
@@ -1810,6 +1848,9 @@ class: middle
 #Pacote com paleta de cores otimizada
   install.packages("viridis"); library(viridis)
 ```
+=======
+# Base de Dados Diamonds
+>>>>>>> b37d6f10b341960a7c019be83cf8d81baaba2b5f
 
 
 ```r
@@ -1833,7 +1874,11 @@ glimpse(happy)
 ---
 class: middle
 
+<<<<<<< HEAD
 # Base de Dados Happy + Heatmap
+=======
+# Base de Dados Diamonds + Heatmap
+>>>>>>> b37d6f10b341960a7c019be83cf8d81baaba2b5f
 
 .left-code[
 
@@ -1883,9 +1928,13 @@ class: middle
 ---
 class: middle
 
+<<<<<<< HEAD
 # Base de Dados Happy + Heatmap
 
 .left-code[
+=======
+# Base de Dados Diamonds
+>>>>>>> b37d6f10b341960a7c019be83cf8d81baaba2b5f
 
 
 ```r
@@ -1914,7 +1963,11 @@ class: middle
 ---
 class: middle
 
+<<<<<<< HEAD
 # Voltando ao mtcars
+=======
+# Base de Dados Diamonds + Correlagrama
+>>>>>>> b37d6f10b341960a7c019be83cf8d81baaba2b5f
 
 
 ```r
