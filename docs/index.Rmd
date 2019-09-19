@@ -340,7 +340,7 @@ knitr::include_graphics("img/rlogos/hex-ggplot2.png")
 
 --
 
-- Inspirada no livro "The Grammar of Graphics" do Leland Wilkinson (1999) (daí o `gg` do `ggplot`].
+- Inspirada no livro "The Grammar of Graphics" do Leland Wilkinson (1999) (daí o `gg` do `ggplot2`].
 
 --
 
@@ -379,7 +379,7 @@ knitr::include_graphics("img/communication/communication_11_GrammarGraphicsGgplo
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 ```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
   ggplot(data, aesthetics) +
@@ -395,7 +395,7 @@ knitr::include_graphics("img/communication/communication_11_GrammarGraphicsGgplo
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 ```{r , echo=T, eval=F, results = 'markup', out.width="90%"}
   ggplot(data, aesthetics) +
@@ -419,7 +419,7 @@ knitr::include_graphics("img/communication/communication_11_GrammarGraphicsGgplo
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 ```{r , echo=T, out.width="90%", eval=F}
 #Conjunto de bibliotecas para ciência de dados 
   install.packages("tidyverse")
@@ -437,7 +437,7 @@ summary(dados)
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -458,7 +458,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -479,7 +479,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -502,7 +502,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -524,7 +524,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -547,7 +547,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -568,7 +568,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -591,7 +591,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -615,7 +615,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -639,7 +639,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -665,7 +665,7 @@ class: middle
 ---
 class: middle
 
-# Sintaxe Básica do ggplot
+# Sintaxe Básica do ggplot2
 
 .left-code[
 
@@ -689,6 +689,36 @@ class: middle
 
 
 
+<!-- sintaxe básica do ggplot-1-11 -->
+---
+class: middle
+
+# Sintaxe Básica do ggplot2
+
+.left-code[
+
+```{r plot-exemplo-ggplot-1-11, echo=T, fig.show="hide", collapse=T, comment = "  #>", out.width="90%"}
+#exemplo
+ p <- ggplot(dados, aes(x = var_x, y = var_y, 
+                   color = var_grupo,
+                   label = var_x)) +
+  geom_point() +
+  geom_label() +
+  facet_grid(.~var_grupo) +
+  theme_dark()
+
+  p + facet_grid(var_grupo~.)
+
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-ggplot-1-11", "png")`)
+]
+
+
+
 
 <!-- aplicações -->
 ---
@@ -697,7 +727,7 @@ class: middle
 # Aplicações
 
 
-```{r, out.width="50%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
+```{r, out.width="45%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
 knitr::include_graphics("img/allisonhorst/ggplot2_visual.jpg")
 ```
 
@@ -1551,7 +1581,6 @@ ggplot(mtcars, aes(mpg, drat)) +
     caption = "Fonte de dados") +
   geom_smooth(method = "lm", se = TRUE, col="red")
 
-
 ```
 ]
 
@@ -1718,7 +1747,7 @@ class: middle
 # Base de Dados Happy
 
 ```{r , echo=T, out.width="90%", eval=F}
-#Extensão do ggplot para análises de correlação e base happy
+#Extensão do ggplot2 para análises de correlação e base happy
   install.packages("GGally"); library(GGally)
 
 #Pacote com paleta de cores otimizada
@@ -1933,7 +1962,7 @@ class: middle
 # Base de Dados Diamonds
 
 ```{r , echo=T, out.width="90%", eval=F}
-#Extensão do ggplot para análises de correlação e base happy
+#Extensão do ggplot2 para análises de correlação e base happy
   install.packages("plotly"); library(plotly)
 ```
 
