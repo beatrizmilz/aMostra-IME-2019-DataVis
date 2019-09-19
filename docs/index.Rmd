@@ -1708,7 +1708,7 @@ Criar um gráfico a partir da série dos dados extraídos do mercado de ações 
 ---
 class: middle
 
-<<<<<<< HEAD
+
 # Base de Dados Happy
 
 ```{r , echo=T, out.width="90%", eval=F}
@@ -1718,9 +1718,6 @@ class: middle
 #Pacote com paleta de cores otimizada
   install.packages("viridis"); library(viridis)
 ```
-=======
-# Base de Dados Diamonds
->>>>>>> b37d6f10b341960a7c019be83cf8d81baaba2b5f
 
 ```{r desc-exemplo-heatmap, echo=TRUE, out.width="50%"}
 glimpse(happy)
@@ -1731,11 +1728,7 @@ glimpse(happy)
 ---
 class: middle
 
-<<<<<<< HEAD
 # Base de Dados Happy + Heatmap
-=======
-# Base de Dados Diamonds + Heatmap
->>>>>>> b37d6f10b341960a7c019be83cf8d81baaba2b5f
 
 .left-code[
 
@@ -1757,13 +1750,9 @@ class: middle
 ---
 class: middle
 
-<<<<<<< HEAD
 # Base de Dados Happy + Heatmap
 
 .left-code[
-=======
-# Base de Dados Diamonds
->>>>>>> b37d6f10b341960a7c019be83cf8d81baaba2b5f
 
 ```{r plot-exemplo-heatmap2, echo=TRUE, fig.show="hide", out.width="90%"}
   happy %>% 
@@ -1787,11 +1776,7 @@ class: middle
 ---
 class: middle
 
-<<<<<<< HEAD
 # Base de Dados Happy + Heatmap
-=======
-# Base de Dados Diamonds + Correlagrama
->>>>>>> b37d6f10b341960a7c019be83cf8d81baaba2b5f
 
 .left-code[
 
@@ -1957,7 +1942,7 @@ class: middle
 ---
 class: middle
 
-# ggplot2 + gganimate
+# gganimate
 ```{r, echo=F, cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>", out.width="40%"}
 library(gganimate)
 library(gapminder)
