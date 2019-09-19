@@ -31,25 +31,28 @@ layout: true
 </span></div> 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message=FALSE, warning=FALSE, 
-                      comment = "  #>", collapse = T)
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message = FALSE, 
+                      warning = FALSE, comment = "  #>", collapse = T)
 ```
 
 ```{r libs}
 #toolbox
  if(!require("tidyverse")){install.packages("tidyverse", dependencies = T); library(tidyverse)}
+#datas
  if(!require("MASS")){install.packages("MASS", dependencies = T); library(MASS)}
+ if(!require("BatchGetSymbols")){install.packages("BatchGetSymbols", dependencies = T); library(BatchGetSymbols)}
 #view
  if(!require("skimr")){install.packages("skimr", dependencies = T); library(skimr)}
 #graphs
+ if(!require("viridis")){install.packages("viridis", dependencies = T); library(viridis)}
+ if(!require("corrplot")){install.packages("corrplot", dependencies = T); library(corrplot)}
+ if(!require("GGally")){install.packages("GGally", dependencies = T); library(GGally)}
  if(!require("plotly")){install.packages("plotly", dependencies = T); library(plotly)}
  if(!require("esquisse")){install.packages("esquisse", dependencies = T); library(esquisse)}
-
 #graphs extra
  if(!require("gganimate")){install.packages("gganimate", dependencies = T); library(gganimate)}
  if(!require("gapminder")){install.packages("gapminder", dependencies = T); library(gapminder)}
  if(!require("highcharter")){install.packages("highcharter", dependencies = T); library(highcharter)}
-
 ```
 
 
@@ -417,19 +420,20 @@ knitr::include_graphics("img/communication/communication_11_GrammarGraphicsGgplo
 class: middle
 
 # Sintaxe Básica do ggplot
+```{r , echo=T, out.width="90%", eval=F}
+#Conjunto de bibliotecas para ciência de dados 
+  install.packages("tidyverse")
+  library(tidyverse)
+```
 
 ```{r , echo=T, out.width="90%"}
-library(tidyverse)
-
 dados <- tibble(var_x = 1:4, var_y = seq(2,8,2), var_grupo = c(rep("a", 3),"b")) 
-
 summary(dados)
 ```
 
 
 
 
-<!-- sintaxe básica do ggplot-1-0 -->
 ---
 class: middle
 
@@ -451,7 +455,6 @@ class: middle
 
 
 
-<!-- sintaxe básica do ggplot-1-1  -->
 ---
 class: middle
 
@@ -473,8 +476,6 @@ class: middle
 
 
 
-
-<!-- sintaxe básica do ggplot-1-2  -->
 ---
 class: middle
 
@@ -706,14 +707,22 @@ knitr::include_graphics("img/allisonhorst/ggplot2_visual.jpg")
 class: middle
 
 # Base de Dados Cars93
+```{r , echo=T, out.width="90%", eval=F}
+#Conjunto de bibliotecas para ciência de dados 
+  install.packages("ggplot2")
+  library(ggplot2)
+
+#Pacote que contém base de dados Cars93
+  install.packages("MASS")
+  library(MASS)
+```
+
+
 ```{r desc-exemplo-hist1, echo=TRUE, out.width="50%"}
+df <- Cars93 %>% 
+  select(Horsepower, Type, AirBags)
 
-library(ggplot2)
-library(MASS)
-
-df <- Cars93
-
-str(df)
+glimpse(df)
 ```
 
 
@@ -1031,7 +1040,7 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar8, echo=TRUE, fig.show="hide", out.width="90%"}
-ggplot(df, aes(x = Type, fill = AirBags))+
+ggplot(df, aes(x = Type, fill = AirBags)) +
   geom_bar(position = "fill", 
                color = "black") +
   theme_minimal() +
@@ -1053,7 +1062,7 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar9, echo=TRUE, fig.show="hide", out.width="90%"}
-ggplot(df, aes(x = Type, fill = AirBags))+
+ggplot(df, aes(x = Type, fill = AirBags)) +
   geom_bar(position = "stack", 
                color = "black") +
   theme_minimal() +
@@ -1076,7 +1085,7 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-bar10, echo=TRUE, fig.show="hide", out.width="90%"}
-ggplot(df, aes(x = Type, fill = AirBags))+
+ggplot(df, aes(x = Type, fill = AirBags)) +
   geom_bar(position = "stack", 
                color = "black") +
   theme_minimal() +
@@ -1099,11 +1108,15 @@ class: middle
 
 # Base de Dados dfhair
 
+```{r , echo=T, out.width="90%", eval=F}
+#Conjunto de bibliotecas para ciência de dados 
+  install.packages("tidyverse")
+  library(tidyverse)
+```
+
+
 ```{r desc-exemplo-bpt1, echo=TRUE, fig.show="hide", out.width="90%"}
-library(tidyverse)
-
 dfhair <- data.frame(HairEyeColor)
-
 glimpse(dfhair)
 ```
 
@@ -1288,6 +1301,7 @@ class: middle
 
 # Base de Dados mtcars
 ```{r desc-exemplo-disp1, echo=TRUE, fig.show="hide", out.width="90%"}
+data(mtcars)
 glimpse(mtcars)
 ```
 
@@ -1299,7 +1313,7 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-disp1, echo=TRUE, fig.show="hide", out.width="90%"}
-ggplot(mtcars, aes(mpg, drat))+
+ggplot(mtcars, aes(mpg, drat)) +
   geom_point()
 ```
 ]
@@ -1475,7 +1489,7 @@ class: middle
 ```{r plot-exemplo-disp8, echo=TRUE, fig.show="hide", out.width="90%"}
 ggplot(mtcars, aes(mpg, drat)) +
   geom_point() +
-  theme_classic()+
+  theme_classic() +
   labs(
     title = "Meu gráfico :)",
     subtitle = "Gráfico de Dispersão",
@@ -1527,14 +1541,13 @@ ggplot(mtcars, aes(mpg, drat)) +
 class: middle
 
 # Base de Dados Ações
-```{r, eval=FALSE, echo=TRUE}
-#Instalando o pacote
+
+```{r , echo=T, out.width="90%", eval=F}
+#Pacote que extrai dados do mercado de ações
 install.packages("BatchGetSymbols")
-```
-```{r, echo=TRUE}
-#Carregando o pacote que extrai dados do mercado de ações
 library(BatchGetSymbols)
 ```
+
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 #Definindo ações para extração de dados
 empresas <- c('PETR4.SA', 'CIEL3.SA')
@@ -1544,10 +1557,9 @@ first.date <- Sys.Date()-90
 last.date <- Sys.Date()
 
 #Inserindo os paramentros para extrair o meu dataframe
-l.out <- BatchGetSymbols(tickers = empresas,
+temp <- BatchGetSymbols(tickers = empresas,
                          first.date = first.date,
                          last.date = last.date, do.cache=FALSE)
-
 ```
 
 ---
@@ -1556,7 +1568,7 @@ class: middle
 # Base de Dados Ações
 
 ```{r, echo=TRUE}
-meudataset <- l.out$df.tickers
+meudataset <- temp$df.tickers
 
 glimpse(meudataset)
 ```
@@ -1568,8 +1580,9 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-st1, echo=TRUE, fig.show="hide", out.width="90%"}
-ggplot(meudataset, aes(x = ref.date, 
-                       y = volume)) +
+ggplot(meudataset, 
+       aes(x = ref.date,
+           y = volume)) +
   geom_line()
 ```
 ]
@@ -1658,76 +1671,112 @@ ggplot(meudataset,
 ---
 class: middle
 
-# Base de Dados XXX
+# Base de Dados Happy
+
+```{r , echo=T, out.width="90%", eval=F}
+#Extensão do ggplot para análises de correlação e base happy
+  install.packages("GGally"); library(GGally)
+
+#Pacote com paleta de cores otimizada
+  install.packages("viridis"); library(viridis)
+```
 
 ```{r desc-exemplo-heatmap, echo=TRUE, out.width="50%"}
-"descritiva dos dados"
+glimpse(happy)
 ```
+
 
 
 ---
 class: middle
 
-# Base de Dados XXX + Heatmap
+# Base de Dados Happy + Heatmap
 
 .left-code[
-```{r plot-exemplo-heatmap, echo=TRUE, fig.show="hide", out.width="90%"}
-library(viridis)
-counts <- diamonds %>% 
-  count(color, cut)
 
-ggplot(counts, aes(color, y = cut, fill = n)) +
-    geom_tile() +
-    scale_fill_viridis() # use a better color palette is one option for better viz
+```{r plot-exemplo-heatmap1, echo=TRUE, fig.show="hide", out.width="90%"}
+  happy %>% 
+    count(age, year) %>% 
+    ggplot(aes(age, year, fill = n)) +
+      geom_tile() +
+      scale_fill_viridis() 
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-heatmap1", "png")`)
+]
 
 
-#dois
-counts2 <- counts %>%
-    group_by(color) %>%
+
+---
+class: middle
+
+# Base de Dados Happy + Heatmap
+
+.left-code[
+
+```{r plot-exemplo-heatmap2, echo=TRUE, fig.show="hide", out.width="90%"}
+  happy %>% 
+    count(age, year) %>% 
+    group_by(year) %>%
     mutate(total = sum(n),
-           prop = n / total)
-    
-ggplot(counts2, aes(color, cut, fill = prop)) +
-    geom_tile() +
-    scale_fill_viridis()
+           prop = n / total) %>%
+    ggplot(aes(age, year, fill = prop)) +
+      geom_tile() +
+      scale_fill_viridis()
 ```
 ]
 
 .right-plot[
-![](`r knitr::fig_chunk("plot-exemplo-heatmap", "png")`)
+![](`r knitr::fig_chunk("plot-exemplo-heatmap2", "png")`)
 ]
 
 
 
 
-
-<!-- Base de Dados XXX + Correlagrama -->
 ---
 class: middle
 
-# Base de Dados XXX
-
-```{r desc-exemplo-corr, echo=TRUE, out.width="50%"}
-"descritiva dos dados"
-```
-
----
-class: middle
-
-# Base de Dados diamonds + Correlagrama
+# Base de Dados Happy + Heatmap
 
 .left-code[
-```{r plot-exemplo-corr, echo=TRUE, fig.show="hide", out.width="90%"}
-library(GGally)
 
-small_diamonds <- sample_n(diamonds, 500)
-ggpairs(small_diamonds, columns = c(1,3,5))
+```{r plot-exemplo-heatmap3, echo=TRUE, fig.show="hide", out.width="90%"}
+  happy %>% 
+    drop_na(happy) %>% 
+    count(age, year, happy) %>% 
+    group_by(year, happy) %>%
+    mutate(total = sum(n),
+           prop = n / total) %>%
+    ggplot(aes(age, year, fill = prop)) +
+      geom_tile() +
+      scale_fill_viridis() +
+  facet_grid(.~happy)
 ```
 ]
 
 .right-plot[
-![](`r knitr::fig_chunk("plot-exemplo-corr", "png")`)
+![](`r knitr::fig_chunk("plot-exemplo-heatmap3", "png")`)
 ]
+
+
+
+
+<!-- mtcars + Correlagrama -->
+
+---
+class: middle
+
+# Voltando ao mtcars
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE}
+skim_with(numeric = list(complete = NULL, hist = NULL))
+skim(mtcars)
+```
+
+
+
 
 ---
 class: middle
@@ -1750,6 +1799,9 @@ corrplot(m, method = "color",
 ![](`r knitr::fig_chunk("plot-exemplo-corr1", "png")`)
 ]
 
+
+
+
 ---
 class: middle
 
@@ -1757,7 +1809,6 @@ class: middle
 
 .left-code[
 ```{r plot-exemplo-corr2, echo=TRUE, fig.show="hide", out.width="90%"}
-
 corrplot(m, method = "color",
          addCoef.col = "black")
 ```
@@ -1769,6 +1820,22 @@ corrplot(m, method = "color",
 
 
 
+---
+class: middle
+
+# Base de Dados mtcars + Correlagrama
+
+.left-code[
+```{r plot-exemplo-corr, echo=TRUE, fig.show="hide", out.width="90%"}
+mtcars %>% 
+  ggpairs()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-corr", "png")`)
+]
+
 
 
 
@@ -1776,55 +1843,40 @@ corrplot(m, method = "color",
 ---
 class: middle
 
-# Base de Dados XXX
+# Base de Dados Diamonds
+
+```{r , echo=T, out.width="90%", eval=F}
+#Extensão do ggplot para análises de correlação e base happy
+  install.packages("plotly"); library(plotly)
+```
 
 ```{r desc-exemplo-plotly, echo=TRUE, out.width="50%"}
-"descritiva dos dados"
-```
-
-
----
-class: middle
-
-# Base de Dados XXX + plotly
-
-.left-code[
-```{r plot-exemplo-plotly, echo=TRUE, fig.show="hide", out.width="90%"}
-library(plotly)
-
 set.seed(100)
-d <- diamonds[sample(nrow(diamonds), 1000), ]
+d <- diamonds %>% filter(cut %in% c("Very Good", "Premium", "Ideal")) %>% sample_frac(0.05)
+d %>% glimpse
+```
 
-p <- ggplot(data = d, aes(x = carat, y = price)) +
+
+---
+class: middle
+
+# Base de Dados Diamonds + plotly
+
+```{r plot-exemplo-plotly, echo=TRUE, fig.height = 4.8}
+p <- ggplot(d, aes(x = carat, y = price)) +
   geom_point(aes(text = paste("Clarity:", clarity)), size = 4) +
-  geom_smooth(aes(colour = cut, fill = cut)) + facet_wrap(~ cut)
-
-p <- ggplotly(p)
-```
-]
-
-.right-plot[
-![](`r knitr::fig_chunk("plot-exemplo-plotly", "png")`)
-]
-
-
-
-
-<!-- Base de Dados XXX + esquisse -->
----
-class: middle
-
-# Base de Dados XXX
-
-```{r desc-exemplo-esquisse, echo=TRUE, out.width="50%"}
-"descritiva dos dados"
+  geom_smooth(aes(colour = cut, fill = cut)) + facet_grid(.~cut)
+ggplotly(p)
 ```
 
+
+
+<!-- esquisse -->
 
 ---
 class: middle
 
-# Para resolver todos os seus problemas
+# Biblioteca Curinga
 
 .left-code[
 ```{r plot-exemplo-esquisse, echo=TRUE, fig.show="hide", out.width="90%"}
@@ -1841,7 +1893,6 @@ library(esquisse)
 
 
 
-
 <!-- Outras possibilidades gráficas -->
 ---
 class: middle
@@ -1849,22 +1900,16 @@ class: middle
 # **Quais outras opções de pacotes para visualização de dados?**
 
 
-
-<!-- ggplot -->
+<!-- gganimate -->
 ---
 class: middle
 
-# ggplot2 
-
-```{r}
+# ggplot2 + gganimate
+```{r, echo=F, cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>", out.width="40%"}
 library(gganimate)
 library(gapminder)
 theme_set(theme_bw())
-```
 
-
-
-```{r message=FALSE, warning=FALSE, out.width="40%", cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>"}
 p <- ggplot(
   gapminder, 
   aes(x = gdpPercap, y=lifeExp, size = pop, colour = country)
@@ -1874,19 +1919,11 @@ p <- ggplot(
   scale_size(range = c(2, 12)) +
   scale_x_log10() +
   labs(x = "PIB per capita", y = "Expectativa de vida (anos)")
-p
-```
-
-
-<!-- gganimate -->
----
-class: middle
-
-# ggplot2 + gganimate
-```{r, cache = TRUE, fig.cap="<center><b>Fonte: <a href='https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/'>Adaptado de Data Novia</a></b></center>", out.width="40%"}
 p + transition_time(year) +
   labs(title = "Ano: {frame_time}")
 ```
+
+
 
 
 
@@ -1949,6 +1986,8 @@ h <- highchart() %>%
 
 h
 ```
+
+
 
 
 <!-- shiny -->
