@@ -14,18 +14,18 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-
 ---
 layout: true
-  
+
 <div class="my-footer"><span>
 
+<a href="https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo">Meetup</a> |
 <a href="https://twitter.com/RLadiesSaoPaulo">Twitter</a> | 
 <a href="http://instagram.com/RLadiesSaoPaulo">Instagram</a> |
 <a href="http://facebook.com/RLadiesSaoPaulo">Facebook</a> |
-<a href="https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo">Meetup</a> |
 <a href="https://github.com/rladies/meetup-presentations_sao-paulo">Github</a> |
-<a href="http://bit.ly/datavisR">bit.ly/datavisR</a> 
+<a href="http://bit.ly/datavizR">bit.ly/datavizR</a> |
+<a href="http://bit.ly/datavizR-open">bit.ly/datavizR-open</a>
 
 
 </span></div> 
@@ -38,10 +38,10 @@ knitr::opts_chunk$set(echo = FALSE, fig.align = "center", message = FALSE,
 ```{r libs}
 #toolbox
  if(!require("tidyverse")){install.packages("tidyverse", dependencies = T); library(tidyverse)}
-#datas
+#datasets
  if(!require("MASS")){install.packages("MASS", dependencies = T); library(MASS)}
  if(!require("BatchGetSymbols")){install.packages("BatchGetSymbols", dependencies = T); library(BatchGetSymbols)}
-#view
+#views
  if(!require("skimr")){install.packages("skimr", dependencies = T); library(skimr)}
 #graphs
  if(!require("viridis")){install.packages("viridis", dependencies = T); library(viridis)}
@@ -97,7 +97,7 @@ knitr::include_graphics("img/hexlogorladies.jpeg")
 --
 
 - Saiba mais:
-  - Website RLadies Global: [https://rladies.org/](https://rladies.org/)
+  - RLadies Global: [https://rladies.org/](https://rladies.org/)
   - MeetUp: [https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
   - Twitter: [@RLadiesGlobal](https://twitter.com/rladiesglobal), [@RLadiesSaoPaulo](https://twitter.com/RLadiesSaoPaulo)
   - Instagram: [@RLadiesSaoPaulo](http://instagram.com/RLadiesSaoPaulo)
@@ -123,7 +123,7 @@ ____
 knitr::include_graphics("img/R-Ladies/NathaliaDemetrio.jpg")
 ```
 
-**<a href='https://www.linkedin.com/in/nathaliademetrio/'> Nathália Demetrio </a>** é bacharel em estatística pela UFPE e mestre pela USP, tem experiência em pesquisa de mídia, pela Kantar IBOPE Media, e insights 'go to market', pela VIVO, atualmente é Growth Manager na Cabify. No mais? Mãe do Guga, Conselheira eleita no Conselho Regional de Estatística (CONRE-3), viciada em brigadeiro, filmes e filosofia, e participante ativa de meio mundo de pauta. 
+**<a href='https://www.linkedin.com/in/nathaliademetrio/'> Nathália Demetrio </a>** é bacharel em estatística pela UFPE e mestre pela USP, tem experiência em pesquisa de mídia, pela Kantar IBOPE Media, e insights 'go to market', pela VIVO, atualmente é Growth Manager na Cabify. No mais? Mãe do Guga, Conselheira eleita no Conselho Regional de Estatística (CONRE-3), viciada em brigadeiro, filmes e filosofia, e participante ativa de meio mundo de pauta. Quer ajudar em alguma? Please let me know :)
 
 
 
@@ -141,11 +141,11 @@ knitr::include_graphics("img/R_logo.svg.png")
 
 --
 
-- oferece um vasto leque de funcionalidades, como bases de dados e integrações com outras linguagens de programação, tudo acessível via bibliotecas.
+- oferece um vasto leque de funcionalidades acessíveis via instalação de bibliotecas.
 
 --
 
-- o R possui uma comunidade extremamente ativa, engajada no aprimoramento da ferramenta, desenvolvimento de novas bibliotecas, e suporte gratuito aos usuários, por meio de fóruns, encontros e materiais.
+- o R possui uma comunidade extremamente ativa, engajada desde o aprimoramento da ferramenta e desenvolvimento de novas bibliotecas, até o suporte aos usuários.
 
 --
 
@@ -159,7 +159,7 @@ class: middle
 
 # O Ciclo da Ciência de Dados
 
-```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> - Adaptado de WICKHAM & GROLEMUND, 2017</b></center>"}
+```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> - (adaptado de Wickham & Grolemund, 2017</b></center>"}
 knitr::include_graphics("img/allisonhorst/data-analysis_withoutR.png")
 ```
 
@@ -171,7 +171,7 @@ class: middle
 
 # O Ciclo da Ciência de Dados
 
-```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> - Adaptado de WICKHAM & GROLEMUND, 2017</b></center>"}
+```{r, out.width="70%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> - (adaptado de Wickham & Grolemund, 2017</b></center>"}
 knitr::include_graphics("img/allisonhorst/data-analysis_withR.png")
 ```
 
@@ -255,7 +255,7 @@ class: middle
 
 # Visualização de Dados
 
-```{r, out.width="70%", fig.cap="<center><b>Fonte: <a href='https://www.data-to-viz.com/'>From Data to Viz</a> </b></center>"}
+```{r, out.width="70%", fig.cap="<center><b>Fonte: <a href='https://www.data-to-viz.com/'> Data to Viz</a> </b></center>"}
 knitr::include_graphics("img/communication/communication_7.png")
 ```
 
@@ -697,7 +697,7 @@ class: middle
 # Aplicações
 
 
-```{r, out.width="30%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
+```{r, out.width="50%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
 knitr::include_graphics("img/allisonhorst/ggplot2_visual.jpg")
 ```
 
@@ -709,8 +709,8 @@ class: middle
 # Base de Dados Cars93
 ```{r , echo=T, out.width="90%", eval=F}
 #Conjunto de bibliotecas para ciência de dados 
-  install.packages("ggplot2")
-  library(ggplot2)
+  install.packages("tidyverse")
+  library(tidyverse)
 
 #Pacote que contém base de dados Cars93
   install.packages("MASS")
@@ -1319,6 +1319,12 @@ Criar um boxplot a partir da base de dados 'hairEyeColor', alterando a cor, evid
 ---
 class: middle
 
+```{r , echo=T, out.width="90%", eval=F}
+#Conjunto de bibliotecas para ciência de dados 
+  install.packages("tidyverse"); library(tidyverse)
+```
+
+
 # Base de Dados mtcars
 ```{r desc-exemplo-disp1, echo=TRUE, fig.show="hide", out.width="90%"}
 data(mtcars)
@@ -1822,7 +1828,7 @@ class: middle
 # Base de Dados mtcars + Correlagrama
 
 .left-code[
-```{r plot-exemplo-corr1, echo=TRUE, fig.show="hide", out.width="90%"}
+```{r plot-exemplo-corr, echo=TRUE, fig.show="hide", out.width="90%"}
 library(corrplot)
 
 m <- cor(mtcars)
@@ -1834,7 +1840,7 @@ corrplot(m, method = "color",
 ]
 
 .right-plot[
-![](`r knitr::fig_chunk("plot-exemplo-corr1", "png")`)
+![](`r knitr::fig_chunk("plot-exemplo-corr", "png")`)
 ]
 
 
@@ -1846,9 +1852,47 @@ class: middle
 # Base de Dados mtcars + Correlagrama
 
 .left-code[
-```{r plot-exemplo-corr2, echo=TRUE, fig.show="hide", out.width="90%"}
+```{r plot-exemplo-corr0, echo=TRUE, fig.show="hide", out.width="90%"}
 corrplot(m, method = "color",
          addCoef.col = "black")
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-corr0", "png")`)
+]
+
+
+<!-- Base de Dados mtcars + ggpairs -->
+
+---
+class: middle
+
+# Base de Dados mtcars + Matriz de gráficos
+
+.left-code[
+```{r plot-exemplo-corr1, echo=TRUE, fig.show="hide", out.width="90%"}
+mtcars %>% 
+  ggpairs()
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-exemplo-corr1", "png")`)
+]
+
+
+
+---
+class: middle
+
+# Base de Dados mtcars + Matriz de gráficos
+
+.left-code[
+```{r plot-exemplo-corr2, echo=TRUE, fig.show="hide", out.width="90%"}
+mtcars %>% 
+  select(drat:am) %>% 
+  ggpairs()
 ```
 ]
 
@@ -1861,23 +1905,28 @@ corrplot(m, method = "color",
 ---
 class: middle
 
-# Base de Dados mtcars + Correlagrama
+# Base de Dados mtcars + Matriz de gráficos
 
 .left-code[
-```{r plot-exemplo-corr, echo=TRUE, fig.show="hide", out.width="90%"}
+```{r plot-exemplo-corr3, echo=TRUE, fig.show="hide", out.width="90%"}
 mtcars %>% 
+  select(drat:am) %>% 
+  mutate_at(c("vs", "am"), as_factor) %>% 
   ggpairs()
 ```
 ]
 
 .right-plot[
-![](`r knitr::fig_chunk("plot-exemplo-corr", "png")`)
+![](`r knitr::fig_chunk("plot-exemplo-corr3", "png")`)
 ]
 
 
 
 
-<!-- Base de Dados XXX + plotly -->
+
+
+
+<!-- Base de Dados diamonds + plotly -->
 ---
 class: middle
 
@@ -1900,7 +1949,7 @@ class: middle
 
 # Base de Dados Diamonds + plotly
 
-```{r plot-exemplo-plotly, echo=TRUE, fig.height = 4.8}
+```{r plot-exemplo-plotly, echo=TRUE, fig.height = 5,  fig.width = 6.5}
 p <- ggplot(d, aes(x = carat, y = price)) +
   geom_point(aes(text = paste("Clarity:", clarity)), size = 4) +
   geom_smooth(aes(colour = cut, fill = cut)) + facet_grid(.~cut)
@@ -1908,25 +1957,43 @@ ggplotly(p)
 ```
 
 
+<!-- ggplot-cheatSheet -->
+
+---
+class: middle
+
+# Referência top 
+
+```{r, out.width="60%", fig.cap="<center><b>RStudio CheatSheets: <a href='https://www.rstudio.com/resources/cheatsheets'> ggplot2 </a> </b></center>"}
+knitr::include_graphics("img/ggplot-cheatSheet-pt1.png")
+```
+
+
+---
+class: middle
+
+# Referência top 
+
+```{r, out.width="60%", fig.cap="<center><b>RStudio CheatSheets: <a href='https://www.rstudio.com/resources/cheatsheets'> ggplot2 </a> </b></center>"}
+knitr::include_graphics("img/ggplot-cheatSheet-pt2.png")
+```
+
 
 <!-- esquisse -->
 
 ---
 class: middle
 
-# Biblioteca Curinga
+# Biblioteca top
 
-.left-code[
-```{r plot-exemplo-esquisse, echo=TRUE, fig.show="hide", out.width="90%"}
+```{r , echo=TRUE, fig.show="hide", out.width="90%", eval=F}
+install.packages("esquisse")
 library(esquisse)
 ```
-]
 
-.right-plot[
-![](`r knitr::fig_chunk("plot-exemplo-esquisse", "png")`)
-]
-
-
+```{r, out.width="50%", fig.cap="<center><b>Ilustração por Allison Horst - Twitter: <a href='https://twitter.com/allison_horst/'> @allison_horst</a> </b></center>"}
+knitr::include_graphics("img/allisonhorst/R-for-better-ds.png")
+```
 
 
 
@@ -1971,25 +2038,30 @@ class: middle
 
 # Highcharter
 
-```{r, cache = T, fig.cap="", out.width="70%", fig.align='center'}
-
+```{r , echo=F, fig.show="hide", out.width="90%", eval=F}
 # create interactive line chart
+install.packages("highcharter")
 library(highcharter)
 
+# data science
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+
+```{r, cache = T, fig.cap="", out.width="70%", fig.align='center'}
 # prepare data
 data(gapminder, package = "gapminder")
 
-library(dplyr)
 asia <- gapminder %>%
   filter(continent == "Americas") %>%
   dplyr::select(year, country, lifeExp)
 
 # convert to long to wide format
-library(tidyr)
 plotdata <- spread(asia, country, lifeExp)
 
 # generate graph
-h <- highchart() %>%
+highchart() %>%
   hc_xAxis(categories = plotdata$year) %>%
   hc_add_series(name = "Brasil",
                 data = plotdata$Brazil) %>%
@@ -2000,7 +2072,8 @@ h <- highchart() %>%
   hc_add_series(name = "Uruguai",
                 data = plotdata$Uruguay) %>%
 
-  hc_title(text = "Expectativa de vida por País - Mercosul - <center><b> Fonte: <a href='https://rkabacoff.github.io/datavis/Interactive.html'>Adaptado de Datavis with R </a></b></center>",
+  hc_title(text = "Expectativa de vida por País - Mercosul - 
+           <center><b> Fonte: <a href='https://rkabacoff.github.io/datavis/Interactive.html'>Adaptado de Datavis with R </a></b></center>",
            margin = 20,
            align = "left",
            style = list(color = "steelblue")) %>%
@@ -2022,7 +2095,6 @@ h <- highchart() %>%
              borderWidth = 4) %>%
   hc_exporting(enabled = TRUE)
 
-h
 ```
 
 
@@ -2034,10 +2106,11 @@ class: middle
 
 #Shiny
 
-```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração de um  <a href='https://apps.garrickadenbuie.com/user-2019/'>Shiny com Tweets sobre a useR!2019 Conf. </a> </b></center>"}
+```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração de um <a href='https://humansofdata.atlan.com/2019/01/shiny-electricity-latrine-water-india/'>Shiny do humansofdata. </a> </b></center>"}
 
-knitr::include_graphics("img/user2019shiny.gif")
+knitr::include_graphics("img/shiny_exemploMapa.gif")
 ```
+
 
 
 <!-- leaflet -->
@@ -2046,13 +2119,10 @@ class: middle
 
 # Leaflet + Shiny
 
-```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração do  <a href='http://shiny.rstudio.com/gallery/superzip-example.html'>Shiny Super Zip Explorer</a> </b></center>"}
+```{r, out.width="80%", fig.cap="<center><b>GIF: Demonstração de um <a href='http://shiny.rstudio.com/gallery/superzip-example.html'>Shiny do Super Zip Explorer</a> </b></center>"}
 
 knitr::include_graphics("img/shinyleaflet.gif")
 ```
-
-- Código disponível no [Github - RStudio](https://github.com/rstudio/shiny-examples/tree/master/063-superzip-example)
-
 
 
 ---
